@@ -96,8 +96,8 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/setting", method = RequestMethod.POST)
-    public ResponseEntity updateprofile(@RequestBody UserDTO userParam) throws Exception {
+    // @RequestMapping(value = "/setting", method = RequestMethod.POST)
+    // public ResponseEntity updateprofile(@RequestBody UserDTO userParam) throws Exception {
         
-    }
+    // }
 }

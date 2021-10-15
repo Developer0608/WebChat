@@ -31,8 +31,7 @@
 		<div id="contacts">
 			<ul>
 				<li class="contact">
-					<div class="wrap">
-						 
+					<div class="wrap"> 
 						<img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
 						<div class="meta">
 							<p class="name">Krishna</p>

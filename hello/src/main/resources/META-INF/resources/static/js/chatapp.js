@@ -57,6 +57,7 @@ $(window).on('keydown', function(e) {
 function setting(event){
 	event.preventDefault();
 
+    
 	console.log('Setting is called');
   window.open("/setting", "_self");
 
@@ -69,7 +70,7 @@ function logout(event){
   swal({
     position: 'top-end',
     icon: 'success',
-    title: 'Your work has been saved',
+    title: 'Logged Out Successfully',
     showConfirmButton: false,
   })
   

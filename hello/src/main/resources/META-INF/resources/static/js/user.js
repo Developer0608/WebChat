@@ -36,7 +36,7 @@ function login(event) {
 		if (res.status == 200) {
 			swal("Great!", "LoggedIn Successfully", "success");
 			setTimeout(()=>{
-				window.open("chatpage", "_self");
+				window.open(`chatpage?email=${email}`, "_self");
 			},1500)
 		} else {
 			swal("OOPS!!!!!!", "Username or Password Incorrect", "error");
@@ -111,9 +111,12 @@ function forget(event){
 	}).then(data => data).then(res => {
 		if (res.status == 200) {
 			swal({
-				title: 'OPT sent Successfully',
-				buttons: false
-			  });
+				position: 'top-end',
+				icon: 'success',
+				title: 'OTP Sent Successfully',
+				showConfirmButton: false,
+				timer: 1500
+			  })
 
 			setTimeout(()=>{
 				window.open(`otp?email=${otp_mail}`, "_self");
