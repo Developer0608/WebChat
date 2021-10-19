@@ -4,10 +4,11 @@
 	<title>WEBCHAT</title>
 	<link rel="icon" href="../../static/pics/logo.jpg" type="image/x-icon">
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="../../static/css/setting.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     
 </head>
 <body>
@@ -21,8 +22,9 @@
 				<div class="profile-tab-nav border-right">
 					<div class="p-4">
 						<div class="img-circle text-center mb-3">
-							<img src="../../static/pics/thumb-97920.png" alt="Image" class="shadow">
+							<img id="profileImage"src="../../static/pics/thumb-97920.png" alt="Image" class="shadow">
 						</div>
+						<input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required="" capture>
 						<h4 class="text-center">User</h4>
 					</div>
 					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -48,20 +50,13 @@
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Username</label>
-								  	<input type="text" class="form-control">
-								</div>
-							</div>
-							 
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>Email</label>
-								  	<input type="text" class="form-control">
+								  	<input type="text" id = "username" class="form-control">
 								</div>
 							</div>
 							 
 						</div>
 						<div>
-							<button class="btn btn-primary">Update</button>
+							<button class="btn btn-primary" onclick="account(event)">Update</button>
 							<button class="btn btn-light">Cancel</button>
 						</div>
 					</div>

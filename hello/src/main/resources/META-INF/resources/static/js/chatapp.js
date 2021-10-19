@@ -54,11 +54,56 @@ $(window).on('keydown', function(e) {
   }
 });
 
+function account(event){
+  event.preventDefault();
+
+  const email = localStorage.getItem('loggedEmail');
+  // console.log(email);
+
+  const username = document.getElementById('username').value;
+  // const email = document.getElementById('email').value;
+  
+  console.log(email, username);
+
+  console.log('>>>>> ACCOUNT >>>>>');
+
+  if(username == ""){
+    swal("OOPS!!!!!!", "Fill Up Username", "warning");
+    return;
+  }
+
+  fetch("http://localhost:8086/account" , {
+    method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify({
+      username: username,
+			email: email, 
+		})
+	}).then(data => data).then(res => {
+		if (res.status == 200) {
+			swal("Great!", "Updated Successfully", "success");
+			setTimeout(()=>{
+				window.open('setting', "_self");
+			},1500)
+		} else {
+			swal("OOPS!!!!!!", "Some Problem Occurred", "error");
+		}
+
+	})
+	.catch(err => {
+		swal("OOPS!!!!!!", "Some Problem Occurred", "error");
+  })
+
+}
 function setting(event){
 	event.preventDefault();
 
+  console.log('>>>>I am in setting function>>>>')
+  const email = localStorage.getItem('loggedEmail');
+  console.log(email);
     
-	console.log('Setting is called');
   window.open("/setting", "_self");
 
 }
@@ -115,3 +160,18 @@ function settingdata(event){
     swal("OOPS!!!!!!", "Account Exists", "warning")
   })
 }
+
+$("#profileImage").click(function(e) {
+    $("#imageUpload").click();
+});
+
+function fasterPreview( uploader ) {
+    if ( uploader.files && uploader.files[0] ){
+          $('#profileImage').attr('src', 
+             window.URL.createObjectURL(uploader.files[0]) );
+    }
+}
+
+$("#imageUpload").change(function(){
+    fasterPreview( this );
+});

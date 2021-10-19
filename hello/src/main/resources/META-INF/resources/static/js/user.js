@@ -35,8 +35,10 @@ function login(event) {
 	}).then(data => data).then(res => {
 		if (res.status == 200) {
 			swal("Great!", "LoggedIn Successfully", "success");
+			localStorage.setItem('loggedEmail', email);
+			console.log(localStorage.getItem('loggedEmail'));
 			setTimeout(()=>{
-				window.open(`chatpage?email=${email}`, "_self");
+				window.open('chatpage', "_self");
 			},1500)
 		} else {
 			swal("OOPS!!!!!!", "Username or Password Incorrect", "error");

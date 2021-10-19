@@ -96,8 +96,16 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    // @RequestMapping(value = "/setting", method = RequestMethod.POST)
-    // public ResponseEntity updateprofile(@RequestBody UserDTO userParam) throws Exception {
+    @RequestMapping(value = "/account", method = RequestMethod.POST)
+    public ResponseEntity updateprofile(@RequestBody UserDTO userParam) throws Exception {
+        System.out.println("Set >>>>>>>>>>>>>> " + userParam.getUsername() + ">>>>> " + userParam.getEmail());
         
-    // }
+        User user = new User();
+
+        user.setUsername(userParam.getUsername());
+        user.setEmail(userParam.getEmail());
+
+        userService.updateUsername(user);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

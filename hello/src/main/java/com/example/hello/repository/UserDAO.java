@@ -54,4 +54,11 @@ public class UserDAO {
         System.out.println("[REPOSITORY]::[USERDAO]::[Update]::updateQuery " + updateQuery);
         jdbcTemplate.execute(updateQuery);
     }
+
+    public void updateUserName(User user){
+        String updateQuery = String.format("UPDATE users SET username = '%s' where email = '%s'", user.getUsername(), user.getEmail());
+
+        System.out.println("[REPOSITORY]::[USERDAO]::[Update]::updateQuery" + updateQuery);
+        jdbcTemplate.execute(updateQuery);
+    }
 }

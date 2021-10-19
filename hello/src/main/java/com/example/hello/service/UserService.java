@@ -84,4 +84,8 @@ public class UserService {
     public void setPassword(User user) throws Exception {
         userDAO.UpdatePassword(user);
     }
+
+    public void updateUsername(User user) throws Exception{
+        userDAO.updateUserName(user);
+    }
 }

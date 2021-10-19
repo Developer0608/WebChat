@@ -76,3 +76,13 @@ div#v-pills-tabContent {
   text-align: center;
   text-decoration: dotted;
 }
+
+#profileImage
+{
+    cursor: pointer;
+}
+
+#imageUpload
+{
+    display: none;
+}
