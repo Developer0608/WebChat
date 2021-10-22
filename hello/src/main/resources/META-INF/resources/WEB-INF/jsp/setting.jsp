@@ -57,7 +57,7 @@
 						</div>
 						<div>
 							<button class="btn btn-primary" onclick="account(event)">Update</button>
-							<button class="btn btn-light">Cancel</button>
+							<button class="btn btn-light" onclick="cancel(event)">Cancel</button>
 						</div>
 					</div>
 					<div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
@@ -66,7 +66,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Old password</label>
-								  	<input type="password" class="form-control">
+								  	<input type="password" id="oldpassword"class="form-control">
 								</div>
 							</div>
 						</div>
@@ -74,19 +74,19 @@
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>New password</label>
-								  	<input type="password" class="form-control">
+								  	<input type="password" id="newpassword"class="form-control">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Confirm new password</label>
-								  	<input type="password" class="form-control">
+								  	<input type="password" id="confirmpassword"class="form-control">
 								</div>
 							</div>
 						</div>
 						<div>
-							<button class="btn btn-primary">Update</button>
-							<button class="btn btn-light">Cancel</button>
+							<button class="btn btn-primary" onclick="updatePassword(event)">Update</button>
+							<button class="btn btn-light" onclick="cancel(event)">Cancel</button>
 						</div>
 					</div>
 			</div>

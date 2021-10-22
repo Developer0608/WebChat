@@ -108,4 +108,56 @@ public class UserController {
         userService.updateUsername(user);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/checkpassword", method = RequestMethod.POST)
+    public ResponseEntity passwordCheck(@RequestBody UserDTO userParam) throws Exception {
+        System.out.println("Password :::::: " + userParam.getPassword() + "Email :: " + userParam.getEmail());
+        
+        User user = new User();
+
+        user.setEmail(userParam.getEmail());
+        user.setPassword(userParam.getPassword());
+
+        int password = userService.checkpassword(user);
+        
+        int userPassword = Integer.parseInt(user.getPassword());
+        System.out.println("USER ENTERED PASSWORD :::::" + userPassword + "PASSWORD ::: " + password);
+        if(password == userPassword){
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+         
+    }
+
+    @RequestMapping(value = "/updatepassword", method = RequestMethod.POST)
+    public ResponseEntity updatedPassword(@RequestBody UserDTO userParam) throws Exception {
+        System.out.println("Password :::::: " + userParam.getPassword() + "Email :: " + userParam.getEmail());
+        
+        User user = new User();
+
+        user.setPassword(userParam.getPassword());
+        user.setEmail(userParam.getEmail());
+
+        userService.updatePassword(user);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/searchByMail", method = RequestMethod.POST)
+    public ResponseEntity searchByMail(@RequestBody UserDTO userParam) throws Exception{
+        System.out.println("EMAIL :::::::" + userParam.getEmail());
+
+        User user = new User();
+
+        user.setEmail(userParam.getEmail());
+
+        boolean result = userService.searchByMail(user);
+        
+        if(result == true){
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
 }

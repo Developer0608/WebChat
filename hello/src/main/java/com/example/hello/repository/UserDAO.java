@@ -61,4 +61,39 @@ public class UserDAO {
         System.out.println("[REPOSITORY]::[USERDAO]::[Update]::updateQuery" + updateQuery);
         jdbcTemplate.execute(updateQuery);
     }
+
+    public int checkpassword(User user){
+        String selectQuery = String.format("SELECT password from users where email = '%s' ", user.getEmail());
+
+        System.out.println("[REPOSITORY]::[USERDAO]::[Select]::SelectQuery " + selectQuery);
+        var resultSet = jdbcTemplate.queryForList(selectQuery);
+        System.out.println("RESULTSET ::: " + resultSet);
+
+        var num = resultSet.get(0).get("password").toString();
+        System.out.println("RETURNING PASSWORD :::: " + num);
+        return Integer.parseInt(num);
+    }
+
+    public void updatePassword(User user){
+        String updateQuery = String.format("UPDATE users SET password = '%s' where email = '%s'", user.getPassword(), user.getEmail());
+
+        System.out.println("[REPOSITORY]::[USERDAO]::[Update]::updateQuery" + updateQuery);
+        jdbcTemplate.execute(updateQuery);
+    }
+
+    public boolean searchByMail(User user){
+        String searchQuery = String.format("SELECT email FROM users WHERE email = '%s'", user.getEmail());
+
+        System.out.println("[REPOSITORY]::[USERDAO]::[Search]::searchQuery " + searchQuery);
+        var resultSet = jdbcTemplate.queryForList(searchQuery);
+        System.out.println("RESULTSET ::: " + resultSet);
+        
+        if(resultSet.isEmpty()){
+            return false;
+        }
+        
+        var num = resultSet.get(0).get("email").toString();
+        System.out.println("EMAIL :::: " + num);
+        return true;
+    }
 }

@@ -61,9 +61,7 @@ public class UserService {
 
     public boolean isValidEmail(User user) {
         try {
-            // System.out.println("I am");
             User userDB = userRepo.getById(user.getEmail());
-            System.out.println("+++++++++++" + userDB);
 
             return true;
         } catch (Exception ex) {
@@ -87,5 +85,25 @@ public class UserService {
 
     public void updateUsername(User user) throws Exception{
         userDAO.updateUserName(user);
+    }
+
+    public int checkpassword(User user) throws Exception{
+        int password = userDAO.checkpassword(user);
+
+        System.out.println("PASSWORD ::::: " + password);
+
+        return password;
+        
+        
+    }
+
+    public void updatePassword(User user) throws Exception{
+        userDAO.updatePassword(user);
+    }
+
+    public boolean searchByMail(User user) throws Exception{
+        boolean result = userDAO.searchByMail(user);
+
+        return result;
     }
 }

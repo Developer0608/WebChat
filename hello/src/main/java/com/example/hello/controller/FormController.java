@@ -1,4 +1,4 @@
-package com.example.hello.view;
+package com.example.hello.controller;
 
 import com.example.hello.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +38,10 @@ public class FormController {
     @RequestMapping("/setting")
     public String SettingPage(){
         return "setting";
+    }
+
+    @RequestMapping("/contact")
+    public String ContactPage(){
+        return "contact";
     }
 }
