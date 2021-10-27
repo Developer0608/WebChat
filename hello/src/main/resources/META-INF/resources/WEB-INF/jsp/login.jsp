@@ -39,7 +39,9 @@
                 <input type="password" placeholder="Password" id="login_password" name="password" required="" />
                 <a href="forget">Forgot your password?</a>
                 <button onclick="login(event)">Sign In</button>
+                <br>
             </form>
+            <button href = "login">ADMIN LOGIN</button>
 
         </div>
         <div class="overlay-container">

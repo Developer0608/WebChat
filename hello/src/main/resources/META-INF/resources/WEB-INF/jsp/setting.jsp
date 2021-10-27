@@ -105,4 +105,5 @@
 </footer>
 </body>
 <script src="../../static/js/chatapp.js"></script>
+<script src="../../static/js/updatepassword.js"></script>
 </html>

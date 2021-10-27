@@ -31,7 +31,6 @@ public class UserController {
         if (userService.isValidUser(user)) {
             return new ResponseEntity<>(HttpStatus.OK);
         }
-
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
@@ -49,7 +48,6 @@ public class UserController {
         }
 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
     }
 
     @RequestMapping(value = "/sendotp", method = RequestMethod.POST)
@@ -63,7 +61,6 @@ public class UserController {
             userService.otpGenerator(user);
             return new ResponseEntity<>(HttpStatus.OK);
         }
-
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
@@ -126,8 +123,7 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.OK);
         }
 
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-         
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);      
     }
 
     @RequestMapping(value = "/updatepassword", method = RequestMethod.POST)
@@ -150,7 +146,6 @@ public class UserController {
         User user = new User();
 
         user.setEmail(userParam.getEmail());
-
         boolean result = userService.searchByMail(user);
         
         if(result == true){

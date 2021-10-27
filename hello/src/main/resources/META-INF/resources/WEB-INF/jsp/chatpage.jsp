@@ -9,7 +9,6 @@
     <link rel="icon" href="../../static/pics/logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="../../static/css/chatapp.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    <script src="../../static/js/chatapp.js"></script>
 </head>
 
 <body>
@@ -20,7 +19,7 @@
 		<div id="profile">
 			<div class="wrap">
 				<img id="profile-img" src="http://emilcarlsson.se/assets/mikeross.png" class="online" alt="" />
-				<p>Mike Ross</p>
+				<p id="logedusername">Username</p>
 				 
 			</div>
 		</div>
@@ -198,5 +197,5 @@
 </div>
 
 </body>
-
+<script src="../../static/js/chatapp.js"></script>
 </html>

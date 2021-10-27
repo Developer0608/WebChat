@@ -4,6 +4,10 @@ function search(event){
     console.log('I am in search function');
     const email = document.getElementById('Email').value;
 
+    if(email == ""){
+        swal("OOPS!", "Specify Email", "warning");
+        return;
+    }
     console.log(email);
     fetch("http://localhost:8086/searchByMail", {
         method: "POST",
@@ -15,7 +19,7 @@ function search(event){
         }) 
     }).then(data => data).then(res => {
         if (res.status == 200) {
-          swal("Great!", "Account Exist with us", "success");
+          swal("Great!", "Contact Saved", "success");
         } else {
           swal("OOPS!!!!!!", "Email is not Registered with us", "error")
         }

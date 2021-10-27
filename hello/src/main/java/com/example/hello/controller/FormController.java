@@ -44,4 +44,9 @@ public class FormController {
     public String ContactPage(){
         return "contact";
     }
+
+    @RequestMapping("/adminpage")
+    public String home(){
+        return "adminpage";
+    }
 }

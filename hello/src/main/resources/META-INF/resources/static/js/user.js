@@ -10,6 +10,15 @@ signInButton.addEventListener('click', () => {
 	container.classList.remove("right-panel-active");
 });
 
+function getUserName(){
+	console.log('I am in username function');
+
+	var email = localStorage.getItem('loggedEmail');
+	console.log(email);
+	console.log('>>>>>>>>>>>>>>>>>');
+
+	
+}
 function login(event) {
 	event.preventDefault();
 
@@ -35,6 +44,7 @@ function login(event) {
 	}).then(data => data).then(res => {
 		if (res.status == 200) {
 			swal("Great!", "LoggedIn Successfully", "success");
+			getUserName();
 			localStorage.setItem('loggedEmail', email);
 			console.log(localStorage.getItem('loggedEmail'));
 			setTimeout(()=>{
