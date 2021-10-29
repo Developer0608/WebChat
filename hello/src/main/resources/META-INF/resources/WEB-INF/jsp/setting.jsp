@@ -37,7 +37,7 @@
 							Password
 						</a>
 						<a class="nav-link" id="security-tab" data-toggle="pill" onclick="logout(event)" role="tab" aria-controls="security" aria-selected="false">
-							<i class="fa fa-user text-center mr-1"></i>
+							<i class="fa fa-sign-out text-center mr-1"></i>
 							Logout
 						</a>
 						<a class="nav-link" id="back-tab" onclick="back(event)" data-toggle="pill" role="tab"  aria-selected="false">

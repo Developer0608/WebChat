@@ -26,5 +26,5 @@
 		</form>
 	</div>
 </body>
-<script src="../../static/js/user.js"></script>
+<script src="../../static/js/forgetpassword.js"></script>
 </html>

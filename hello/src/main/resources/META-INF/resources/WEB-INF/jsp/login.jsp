@@ -73,6 +73,6 @@
         </p>
     </footer>
 </body>
-<script src="../../static/js/user.js"></script>
+<script src="../../static/js/login.js"></script>
 
 </html>

@@ -23,6 +23,7 @@ public class PasswordUtils {
         }
         return new String(returnValue);
     }
+
     public static byte[] hash(char[] password, byte[] salt) {
         PBEKeySpec spec = new PBEKeySpec(password, salt, ITERATIONS, KEY_LENGTH);
         Arrays.fill(password, Character.MIN_VALUE);
@@ -35,6 +36,8 @@ public class PasswordUtils {
             spec.clearPassword();
         }
     }
+
+    //function to generate encrypted password
     public static String generateSecurePassword(String password, String salt) {
         String returnValue = null;
         byte[] securePassword = hash(password.toCharArray(), salt.getBytes());
@@ -44,6 +47,7 @@ public class PasswordUtils {
         return returnValue;
     }
     
+    //function to verify the entered password is correct or not
     public static boolean verifyUserPassword(String providedPassword,
             String securedPassword, String salt)
     {

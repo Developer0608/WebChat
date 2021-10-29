@@ -92,7 +92,7 @@ function signup(event){
 					window.open('/', "_self");
 				},500);
 			} else {
-				swal("OOPS!!!!!!", "Faild", "error")
+				swal("OOPS!!!!!!", "Account Already Exists", "error")
 			}
 	
 		})
