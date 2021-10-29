@@ -1,8 +1,11 @@
 package com.example.hello.controller;
 
+import java.util.Map;
+
 import com.example.hello.dto.UserDTO;
 import com.example.hello.model.User;
 import com.example.hello.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -27,9 +30,12 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity login(@RequestBody UserDTO user) throws InterruptedException {
+    public ResponseEntity login(@RequestBody UserDTO user) throws Exception {
         if (userService.isValidUser(user)) {
-            return new ResponseEntity<>(HttpStatus.OK);
+            // Fetch user details
+            
+            Map<String, Object> result = userService.getUserDetail(user);
+            return new ResponseEntity<>(result, null, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
@@ -89,7 +95,7 @@ public class UserController {
         user.setPassword(userParam.getPassword());
         user.setEmail(userParam.getEmail());
 
-        userService.setPassword(user);
+        userService.updatePassword(user);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -115,29 +121,16 @@ public class UserController {
         user.setEmail(userParam.getEmail());
         user.setPassword(userParam.getPassword());
 
-        int password = userService.checkpassword(user);
+        boolean result = userService.checkpassword(user);
         
-        int userPassword = Integer.parseInt(user.getPassword());
-        System.out.println("USER ENTERED PASSWORD :::::" + userPassword + "PASSWORD ::: " + password);
-        if(password == userPassword){
+         
+        if(result == true){
             return new ResponseEntity<>(HttpStatus.OK);
         }
 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);      
     }
 
-    @RequestMapping(value = "/updatepassword", method = RequestMethod.POST)
-    public ResponseEntity updatedPassword(@RequestBody UserDTO userParam) throws Exception {
-        System.out.println("Password :::::: " + userParam.getPassword() + "Email :: " + userParam.getEmail());
-        
-        User user = new User();
-
-        user.setPassword(userParam.getPassword());
-        user.setEmail(userParam.getEmail());
-
-        userService.updatePassword(user);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
 
     @RequestMapping(value = "/searchByMail", method = RequestMethod.POST)
     public ResponseEntity searchByMail(@RequestBody UserDTO userParam) throws Exception{
@@ -154,5 +147,4 @@ public class UserController {
 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-
 }

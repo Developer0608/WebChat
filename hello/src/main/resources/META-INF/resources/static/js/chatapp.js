@@ -60,10 +60,14 @@ $(window).on('keydown', function(e) {
 function account(event){
   event.preventDefault();
 
-  const email = localStorage.getItem('loggedEmail');
+  user = localStorage.getItem("loggedUser");
+  userObj = JSON.parse(user);
+  console.log(userObj);
+  
+  var email = userObj.email;
   // console.log(email);
 
-  const username = document.getElementById('username').value;
+  var username = document.getElementById('username').value;
   // const email = document.getElementById('email').value;
   
   console.log(email, username);
@@ -124,6 +128,7 @@ function setting(event){
 function logout(event){
   event.preventDefault();
 
+  localStorage.clear();
   console.log('I am in Logout Function');
   swal({
     position: 'top-end',

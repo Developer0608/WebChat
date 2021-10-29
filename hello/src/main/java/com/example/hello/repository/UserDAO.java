@@ -1,17 +1,14 @@
 package com.example.hello.repository;
 
-import java.util.Random;
+import java.util.Map;
 
+import com.example.hello.dto.UserDTO;
 import com.example.hello.model.User;
-import com.example.hello.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.batch.BatchProperties.Jdbc;
 import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
-import lombok.var;
 
 @Repository
 public class UserDAO {
@@ -62,7 +59,7 @@ public class UserDAO {
         jdbcTemplate.execute(updateQuery);
     }
 
-    public int checkpassword(User user){
+    public String checkpassword(User user){
         String selectQuery = String.format("SELECT password from users where email = '%s' ", user.getEmail());
 
         System.out.println("[REPOSITORY]::[USERDAO]::[Select]::SelectQuery " + selectQuery);
@@ -71,7 +68,7 @@ public class UserDAO {
 
         var num = resultSet.get(0).get("password").toString();
         System.out.println("RETURNING PASSWORD :::: " + num);
-        return Integer.parseInt(num);
+        return num;
     }
 
     public void updatePassword(User user){
@@ -95,5 +92,15 @@ public class UserDAO {
         var num = resultSet.get(0).get("email").toString();
         System.out.println("EMAIL :::: " + num);
         return true;
+    }
+
+    public Map<String, Object> getUserDetail(UserDTO user){
+        String searchQuery = String.format("select username, email from users where email = '%s'", user.getEmail());
+
+        System.out.println("[REPOSITORY]::[USERDAO]::[Search]::searchQuery " + searchQuery);
+        var resultSet = jdbcTemplate.queryForMap(searchQuery);
+        System.out.println("RESULTSET :::: " + resultSet);
+
+        return resultSet;
     }
 }

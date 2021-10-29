@@ -1,7 +1,11 @@
 package com.example.hello.service;
 
+import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 import com.example.hello.dto.UserDTO;
 import com.example.hello.model.User;
@@ -22,6 +26,9 @@ public class UserService {
     @Autowired
     private MailSenderService mailSenderService;
 
+    @Autowired
+    private static PasswordUtils passwordUtils;
+
     public void otpGenerator(User user) {
         Random rand = new Random();
         int otp_number = rand.nextInt(9999);
@@ -38,10 +45,14 @@ public class UserService {
 
     public boolean isValidUser(UserDTO user) {
 
+        String salt = "2342034wkljwelrkwjermsdfjkslfs";
+
         try {
             User userDB = userRepo.getById(user.getEmail());
 
-            return userDB.getPassword().equals(user.getPassword());
+            boolean isValidated = passwordUtils.verifyUserPassword(user.getPassword(), userDB.getPassword(), salt);
+
+            return isValidated;
 
         } catch (Exception ex) {
             System.out.println("[ERROR]::[SERVICE]::isValidUser:: " + ex);
@@ -70,6 +81,17 @@ public class UserService {
     }
 
     public void saveUser(User user) throws Exception {
+        // Encrypt Password
+        String password = user.getPassword();
+
+        String salt = "2342034wkljwelrkwjermsdfjkslfs";
+
+        String encryptedPassword = passwordUtils.generateSecurePassword(password, salt);
+
+        System.out.println(">>>>>>>>>>PASSWORD" + encryptedPassword);
+
+        user.setPassword(encryptedPassword);
+
         userDAO.save(user);
     }
 
@@ -87,17 +109,29 @@ public class UserService {
         userDAO.updateUserName(user);
     }
 
-    public int checkpassword(User user) throws Exception{
-        int password = userDAO.checkpassword(user);
+    public boolean checkpassword(User user) throws Exception{
+        String securedPassword = userDAO.checkpassword(user);
+        String password = user.getPassword();
+        String salt = "2342034wkljwelrkwjermsdfjkslfs";
 
         System.out.println("PASSWORD ::::: " + password);
 
-        return password;
+        System.out.println("ENCRYPTED PASSWORD ::::: " + securedPassword);
         
-        
+        boolean result = passwordUtils.verifyUserPassword(password, securedPassword, salt);
+         
+        return result;
     }
 
     public void updatePassword(User user) throws Exception{
+        String salt = "2342034wkljwelrkwjermsdfjkslfs";
+
+        String encryptedPassword = passwordUtils.generateSecurePassword(user.getPassword(), salt);
+
+        System.out.println(">>>>>>>>>>PASSWORD" + encryptedPassword);
+
+        user.setPassword(encryptedPassword);
+
         userDAO.updatePassword(user);
     }
 
@@ -105,5 +139,9 @@ public class UserService {
         boolean result = userDAO.searchByMail(user);
 
         return result;
+    }
+
+    public Map<String, Object> getUserDetail(UserDTO user) throws Exception{
+        return  userDAO.getUserDetail(user);
     }
 }

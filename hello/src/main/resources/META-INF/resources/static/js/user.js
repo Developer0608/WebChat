@@ -10,15 +10,6 @@ signInButton.addEventListener('click', () => {
 	container.classList.remove("right-panel-active");
 });
 
-function getUserName(){
-	console.log('I am in username function');
-
-	var email = localStorage.getItem('loggedEmail');
-	console.log(email);
-	console.log('>>>>>>>>>>>>>>>>>');
-
-	
-}
 function login(event) {
 	event.preventDefault();
 
@@ -41,19 +32,25 @@ function login(event) {
 			email: email, 
 			password: password, 
 			username: ""})
-	}).then(data => data).then(res => {
-		if (res.status == 200) {
-			swal("Great!", "LoggedIn Successfully", "success");
-			getUserName();
-			localStorage.setItem('loggedEmail', email);
-			console.log(localStorage.getItem('loggedEmail'));
-			setTimeout(()=>{
-				window.open('chatpage', "_self");
-			},1500)
+	})
+	.then(data => {
+		if (data.status == 200) {
+			return data.json();
 		} else {
 			swal("OOPS!!!!!!", "Username or Password Incorrect", "error");
+			return;
 		}
-
+	})
+	.then(res => {
+		if(res) {
+			swal("Great!", "LoggedIn Successfully", "success");
+			
+			localStorage.setItem('loggedUser', JSON.stringify(res));
+			console.log(res);
+			setTimeout(()=>{
+				window.open('chatpage', "_self");
+			},500);
+		}
 	})
 	.catch(err => {
 		swal("OOPS!!!!!!", "Account Does't Exist", "error");

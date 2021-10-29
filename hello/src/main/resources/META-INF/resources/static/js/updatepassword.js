@@ -1,14 +1,18 @@
 function updatePassword(event){
     event.preventDefault();
   
-    const email = localStorage.getItem('loggedEmail');
     const oldpassword = document.getElementById('oldpassword').value;
     const newpassword = document.getElementById('newpassword').value;
     const confirmpassword = document.getElementById('confirmpassword').value;
   
-  
     console.log(email, oldpassword, newpassword, confirmpassword);
-  
+
+    user = localStorage.getItem("loggedUser");
+    userObj = JSON.parse(user);
+    console.log(userObj);
+    var email = userObj.email;
+
+    console.log(">>>>>>> " , (email));
     if(oldpassword == newpassword){
       swal("OOPS!!!!!!", "New Password Cannot be same as Old Password", "warning");
       return;
@@ -31,7 +35,7 @@ function updatePassword(event){
           })		
         }).then(data => data).then(res => {
             if (res.status == 200) {
-               fetch("http://localhost:8086/updatepassword", {
+               fetch("http://localhost:8086/setpassword", {
                   method: "POST",
                   headers: {
                     "Content-Type": "application/json"
@@ -63,4 +67,4 @@ function updatePassword(event){
       swal("OOPS!!!!!!", "Password Mis-match", "warning");
       return;
     }
-  }
+}
