@@ -48,7 +48,7 @@ function login(event) {
 			localStorage.setItem('loggedUser', JSON.stringify(res));
 			console.log(res);
 			setTimeout(()=>{
-				window.open('chatpage', "_self");
+				window.open('chat', "_self");
 			},500);
 		}
 	})

@@ -30,9 +30,9 @@ public class FormController {
         return "setpassword";
     }
 
-    @RequestMapping("/chatpage")
+    @RequestMapping("/chat")
     public String ChatPage() {
-        return "chatpage";
+        return "chat";
     }
 
     @RequestMapping("/setting")
@@ -43,10 +43,5 @@ public class FormController {
     @RequestMapping("/contact")
     public String ContactPage(){
         return "contact";
-    }
-
-    @RequestMapping("/adminpage")
-    public String home(){
-        return "adminpage";
     }
 }

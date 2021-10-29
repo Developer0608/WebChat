@@ -87,3 +87,11 @@ div#v-pills-tabContent {
 {
     display: none;
 }
+
+#back-tab{
+  cursor: pointer;
+}
+
+#security-tab{
+  cursor: pointer;
+}

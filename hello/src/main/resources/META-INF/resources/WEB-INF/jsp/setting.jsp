@@ -40,6 +40,10 @@
 							<i class="fa fa-user text-center mr-1"></i>
 							Logout
 						</a>
+						<a class="nav-link" id="back-tab" onclick="back(event)" data-toggle="pill" role="tab"  aria-selected="false">
+							<i class="fa fa-undo text-center mr-1"></i>
+							Back
+						</a>
 						 
 					</div>
 				</div>

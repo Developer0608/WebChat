@@ -60,6 +60,14 @@ $(window).on('keydown', function(e) {
   }
 });
 
+
+function back(event){
+  event.preventDefault();
+
+  console.log('I am in back function');
+
+  window.open('/chat', '_self');
+}
 function account(event){
   event.preventDefault();
   
