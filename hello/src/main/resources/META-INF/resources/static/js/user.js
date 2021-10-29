@@ -88,6 +88,9 @@ function signup(event){
 		}).then(data => data).then(res => {
 			if (res.status == 200) {
 				swal("Great!", "Signed Up Successfully", "success");
+				setTimeout(()=>{
+					window.open('/', "_self");
+				},500);
 			} else {
 				swal("OOPS!!!!!!", "Faild", "error")
 			}

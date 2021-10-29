@@ -1,7 +1,10 @@
 // $(".messages").animate({ scrollTop: $(document).height() }, "fast");
 
+user = localStorage.getItem("loggedUser");
+userObj = JSON.parse(user);
+console.log(userObj);
 
-document.getElementById("logedusername").innerHTML = "Azad";
+document.getElementById("loggeduser").innerHTML = userObj.username;
 
 $("#profile-img").click(function() {
 	$("#status-options").toggleClass("active");
@@ -59,10 +62,6 @@ $(window).on('keydown', function(e) {
 
 function account(event){
   event.preventDefault();
-
-  user = localStorage.getItem("loggedUser");
-  userObj = JSON.parse(user);
-  console.log(userObj);
   
   var email = userObj.email;
   // console.log(email);

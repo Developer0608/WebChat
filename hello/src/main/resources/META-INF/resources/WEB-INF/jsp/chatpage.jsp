@@ -19,7 +19,7 @@
 		<div id="profile">
 			<div class="wrap">
 				<img id="profile-img" src="http://emilcarlsson.se/assets/mikeross.png" class="online" alt="" />
-				<p id="logedusername">Username</p>
+				<p id="loggeduser">Username</p>
 				 
 			</div>
 		</div>

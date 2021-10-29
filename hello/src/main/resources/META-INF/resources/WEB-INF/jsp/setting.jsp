@@ -25,7 +25,7 @@
 							<img id="profileImage"src="../../static/pics/thumb-97920.png" alt="Image" class="shadow">
 						</div>
 						<input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required="" capture>
-						<h4 class="text-center">User</h4>
+						<h4 class="text-center" id = "loggeduser">User</h4>
 					</div>
 					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 						<a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">
