@@ -1,5 +1,3 @@
-// $(".messages").animate({ scrollTop: $(document).height() }, "fast");
-
 user = localStorage.getItem("loggedUser");
 userObj = JSON.parse(user);
 console.log(userObj);
@@ -60,7 +58,24 @@ $(window).on('keydown', function(e) {
   }
 });
 
+$("#profileImage").click(function(e) {
+  $("#imageUpload").click();
+});
 
+function fasterPreview( uploader ) {
+  if ( uploader.files && uploader.files[0] ){
+        $('#profileImage').attr('src', 
+           window.URL.createObjectURL(uploader.files[0]) );
+  }
+}
+
+$("#imageUpload").change(function(){
+  fasterPreview( this );
+});
+
+
+
+//function to move back from setting page to chat page
 function back(event){
   event.preventDefault();
 
@@ -68,14 +83,14 @@ function back(event){
 
   window.open('/chat', '_self');
 }
+
+
+//function to update username
 function account(event){
   event.preventDefault();
   
   var email = userObj.email;
-  // console.log(email);
-
   var username = document.getElementById('username').value;
-  // const email = document.getElementById('email').value;
   
   console.log(email, username);
 
@@ -112,6 +127,8 @@ function account(event){
 
 }
 
+
+//cancelling event function
 function cancel(event){
   event.preventDefault();
 
@@ -121,6 +138,8 @@ function cancel(event){
   },1500)
 }
 
+
+//function to call setting page from chat page
 function setting(event){
 	event.preventDefault();
 
@@ -132,6 +151,8 @@ function setting(event){
 
 }
 
+
+//function to logout tthe loggedin user
 function logout(event){
   event.preventDefault();
 
@@ -149,59 +170,9 @@ function logout(event){
   },1500)
 }
 
-function settingdata(event){
-  event.preventDefault();
-
-  console.log('Modifying Data via setting');
-
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
-
-  console.log(username, password);
-
-  if(username == "" || password == ""){
-    swal("OOPS!!!!!!", "Fill Up all the Columns", "warning");
-    return;
-  }
-
-  fetch("http://localhost:8086/profileupdated", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      username: username,
-      password: password
-    })
-  }).then(data => data).then(res => {
-    if (res.status == 200) {
-      swal("Great!", "Username Updated Successfully", "success");
-    } else {
-      swal("OOPS!!!!!!", "Faild", "error")
-    }
-
-  })
-  .catch(err => {
-    swal("OOPS!!!!!!", "Account Exists", "warning")
-  })
-}
-
 function AddtoContact(event){
   event.preventDefault();
 
   window.open("/contact", "_self");
 }
-$("#profileImage").click(function(e) {
-    $("#imageUpload").click();
-});
 
-function fasterPreview( uploader ) {
-    if ( uploader.files && uploader.files[0] ){
-          $('#profileImage').attr('src', 
-             window.URL.createObjectURL(uploader.files[0]) );
-    }
-}
-
-$("#imageUpload").change(function(){
-    fasterPreview( this );
-});
