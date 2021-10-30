@@ -159,7 +159,7 @@ input {
 
 .container.right-panel-active .overlay-container{
 	transform: translateX(-100%);
-	background.image = url("../../static/pics/logo.jpg");
+	background-image: url("../../static/pics/logo.jpg");
 }
 
 /* LOADER */
