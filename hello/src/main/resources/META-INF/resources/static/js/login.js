@@ -34,7 +34,7 @@ function login(event) {
 		body: JSON.stringify({
 			email: email, 
 			password: password, 
-			username: ""})
+			})
 	})
 	.then(data => {
 		if (data.status == 200) {
