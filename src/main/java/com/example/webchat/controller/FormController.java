@@ -1,6 +1,6 @@
-package com.example.hello.controller;
+package com.example.webchat.controller;
 
-import com.example.hello.repository.UserRepo;
+import com.example.webchat.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

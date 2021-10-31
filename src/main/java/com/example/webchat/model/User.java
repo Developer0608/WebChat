@@ -1,4 +1,4 @@
-package com.example.hello.model;
+package com.example.webchat.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

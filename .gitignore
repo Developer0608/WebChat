@@ -35,4 +35,4 @@ build/
 .env
 
 *.properties
-hello/src/main/resources/application.properties
+webchat/src/main/resources/application.properties

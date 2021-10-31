@@ -1,4 +1,4 @@
-package com.example.hello.controller;
+package com.example.webchat.controller;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -12,6 +12,6 @@ public class MessageController {
         System.out.println(">>>>>>>>>>>>> MESSAGE IN SERVER ##############" + message);
       Thread.sleep(1000); // simulated delay
       return "FROM SERVER";
-    //   return new Greeting("Hello, " + HtmlUtils.htmlEscape(message.getName()) + "!");
+    //   return new Greeting("webchat, " + HtmlUtils.htmlEscape(message.getName()) + "!");
     }
 }

@@ -1,4 +1,4 @@
-package com.example.hello.dto;
+package com.example.webchat.dto;
 
 public class UserDTO {
     private String username;

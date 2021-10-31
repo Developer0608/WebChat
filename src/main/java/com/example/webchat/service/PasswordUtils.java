@@ -1,4 +1,4 @@
-package com.example.hello.service;
+package com.example.webchat.service;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;

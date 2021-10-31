@@ -1,4 +1,4 @@
-package com.example.hello.service;
+package com.example.webchat.service;
 
 import java.util.Map;
 import java.util.Optional;
@@ -7,10 +7,10 @@ import java.util.Random;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
-import com.example.hello.dto.UserDTO;
-import com.example.hello.model.User;
-import com.example.hello.repository.UserDAO;
-import com.example.hello.repository.UserRepo;
+import com.example.webchat.dto.UserDTO;
+import com.example.webchat.model.User;
+import com.example.webchat.repository.UserDAO;
+import com.example.webchat.repository.UserRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,7 +39,7 @@ public class UserService {
         System.out.println("USER = " + user.getEmail() + " " + username);
         // send email with OTP
         System.out.println(otp_number);
-        String emailBody = String.format("Hello %s,\n\t\tThis is your OTP to Reset Your Password : %s\n", username,
+        String emailBody = String.format("webchat %s,\n\t\tThis is your OTP to Reset Your Password : %s\n", username,
                 otp_number);
 
         System.out.println("EMAIL BODY ::: " + emailBody);
