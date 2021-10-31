@@ -103,4 +103,17 @@ public class UserDAO {
 
         return resultSet;
     }
+
+    public String getUserName(User user){
+        String searchQuery = String.format("select username from users where email = '%s'", user.getEmail());
+
+        System.out.println("[REPOSITORY]::[USERDAO]::[Search]::searchQuery " + searchQuery);
+        var resultSet = jdbcTemplate.queryForList(searchQuery);
+        System.out.println("RESULTSET ::: " + resultSet);
+
+        var num = resultSet.get(0).get("username").toString();
+        System.out.println("EMAIL :::: " + num);
+
+        return num;
+    }
 }

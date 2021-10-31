@@ -34,12 +34,15 @@ public class UserService {
         int otp_number = rand.nextInt(9999);
 
         userDAO.update(user, otp_number);
-
+        
+        String username = userDAO.getUserName(user);
+        System.out.println("USER = " + user.getEmail() + " " + username);
         // send email with OTP
         System.out.println(otp_number);
-        String emailBody = String.format("Hello %s,\n This is you OTP to Reset Your Password : %s\n", user.getEmail(),
+        String emailBody = String.format("Hello %s,\n\t\tThis is your OTP to Reset Your Password : %s\n", username,
                 otp_number);
 
+        System.out.println("EMAIL BODY ::: " + emailBody);
         mailSenderService.sendmail(user.getEmail(), emailBody, "OTP To Reset Password");
     }
 
