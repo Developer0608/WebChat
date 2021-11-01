@@ -52,7 +52,7 @@ function Otp(event){
 
 	if (email === '' || email === null) {
 		console.log("######## SPECIFY EMAIL")
-		window.location.replace('/');
+		window.location.replace('/authenticate');
 		return;
 	}
 

@@ -30,14 +30,18 @@ public class UserService {
     Environment env;
 
     //function to generate random OTP and call mainsenderservice to send mail.
-    public void otpGenerator(User user) {
+    public void otpGenerator(UserDTO user) {
         Random rand = new Random();
 
         int otp_number = rand.nextInt(9999);
-        userDAO.update(user, otp_number);
+
+        user.setOtp(otp_number);
+        String email = user.getEmail();
+
+        userDAO.updateUser(email, user);
         
-        String username = userDAO.getUserName(user);
-        System.out.println("USER = " + user.getEmail() + " " + username);
+        // String username = userDAO.getUserName(user);
+        // System.out.println("USER = " + user.getEmail() + " " + username);
 
         System.out.println(otp_number);
         String emailBody = String.format("webchat %s,\n\t\tThis is your OTP to Reset Your Password : %s\n", username,

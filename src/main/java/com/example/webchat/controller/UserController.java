@@ -1,6 +1,5 @@
 package com.example.webchat.controller;
 
-import java.util.Map;
 import com.example.webchat.dto.UserDTO;
 import com.example.webchat.model.User;
 import com.example.webchat.service.UserService;
@@ -25,13 +24,16 @@ public class UserController {
 
 
     @RequestMapping(value = "/sendotp", method = RequestMethod.POST)
-    public ResponseEntity sendotp(@RequestBody UserDTO userParam) throws InterruptedException {
+    public ResponseEntity sendotp(@RequestBody UserDTO userParam) throws Exception {
         System.out.println(">>>>>>>>>" + userParam.getEmail());
-        User user = new User();
+        UserDTO user = new UserDTO();
 
         user.setEmail(userParam.getEmail());
+        String email = user.getEmail();
 
-        if (userService.isValidEmail(user)) {
+        System.out.println("I AM IN SENDOTP");
+        var result = userService.getUserDetail(email);
+        if(result != null){
             userService.otpGenerator(user);
             return new ResponseEntity<>(HttpStatus.OK);
         }
@@ -42,6 +44,7 @@ public class UserController {
     public ResponseEntity checkotp(@RequestBody UserDTO userParam) throws Exception {
         System.out.println(">>>>>>>>>>>>" + userParam.getOtp() + ">>>>>" + userParam.getEmail());
 
+        
         User user = new User();
 
         user.setEmail(userParam.getEmail());
@@ -62,7 +65,7 @@ public class UserController {
     public ResponseEntity<?> getUser(@PathVariable("email") String email) throws Exception {
         UserDTO user = new UserDTO(email);
 
-        return ResponseEntity.ok(userService.getUserDetail(u));
+        return ResponseEntity.ok(userService.getUserDetail(user));
     }
 
 }

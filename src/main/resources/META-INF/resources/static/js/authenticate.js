@@ -53,6 +53,7 @@ function login(event) {
 			localStorage.setItem('token', (res.jwttoken))
 			console.log(res);
 			setTimeout(()=>{
+				console.log('I am in timeout function');
 				window.open('/', "_self");
 			},500);
 		}

@@ -60,7 +60,7 @@ public class UserDAO {
     }
 
     public Map<String, Object> getUserDetail(String email){
-        String searchQuery = String.format("select username, email, password from users where email = '%s'", email);
+        String searchQuery = String.format("select username, email, password, otp from users where email = '%s'", email);
 
         System.out.println("[REPOSITORY]::[USERDAO]::[Search]::searchQuery " + searchQuery);
         var resultSet = jdbcTemplate.queryForMap(searchQuery);
@@ -73,6 +73,7 @@ public class UserDAO {
 
         String setValues = "";
         if (user.getOtp() != 0) {
+            System.out.println("I am setting up OTP");
             setValues += String.format(" otp = %d", user.getOtp());
         }
 

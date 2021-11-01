@@ -1,7 +1,5 @@
 package com.example.webchat.controller;
 
-
-import com.example.webchat.config.JwtTokenUtil;
 import com.example.webchat.dto.UserDTO;
 import com.example.webchat.model.JwtRequest;
 import com.example.webchat.model.JwtResponse;
@@ -32,7 +30,7 @@ public class JwtAuthenticationController {
     UserService userService;
     
     @Autowired
-	private JwtTokenUtil jwtTokenUtil;
+	private com.example.webchat.service.JwtTokenUtil jwtTokenUtil;
 
     @Autowired
     JwtUserDetailsService userDetailsService;

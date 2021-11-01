@@ -1,4 +1,4 @@
-package com.example.webchat.config;
+package com.example.webchat.service;
 
 import java.io.Serializable;
 import java.util.Date;
