@@ -1,10 +1,8 @@
 package com.example.webchat.repository;
 
 import java.util.Map;
-
 import com.example.webchat.dto.UserDTO;
 import com.example.webchat.model.User;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

@@ -1,3 +1,4 @@
+//function to perform operations related to forget password 
 function forget(event){
 	event.preventDefault();
 	const otp_mail = document.getElementById("email").value;

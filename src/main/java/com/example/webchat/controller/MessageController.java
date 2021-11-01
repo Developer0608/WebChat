@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class MessageController {
+    
     @MessageMapping("/chat")
     @SendTo("/topic/app")
     public String greeting(String message) throws Exception {

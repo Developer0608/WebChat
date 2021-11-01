@@ -33,6 +33,7 @@ public class UserController {
             // Fetch user details
             
             Map<String, Object> result = userService.getUserDetail(user);
+            
             return new ResponseEntity<>(result, null, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);

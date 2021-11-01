@@ -183,12 +183,10 @@
 			<div class="wrap">
 			<input type="text" placeholder="Write your message..." />
              
-			<i class="fa fa-paperclip attachment" aria-hidden="true"></i>
+			<i class="fa fa-paperclip attachment" aria-hidden="true">
+				<!-- <input id="file" type="file" name="file" placeholder="Photo" required="" capture> -->
+			</i>
 			<button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>  
-
-              
-			<!-- <i class="fa fa-paperclip attachment" aria-hidden="true"></i> -->
-			<!-- <button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button> -->
             
 			</div>
 		</div>

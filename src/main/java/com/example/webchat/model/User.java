@@ -25,12 +25,6 @@ public class User {
     @Column(name = "otp")
     private Integer otp;
 
-    /**
-     * Object - null Primitive - int = 0, string = '',
-     * 
-     * @return
-     */
-
     public String getUsername() {
         return username;
     }
