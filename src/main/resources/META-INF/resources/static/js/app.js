@@ -33,7 +33,7 @@ function connectClient() {
 
 function sendClient() {
     console.log('Sending Message ', stompClient);
-    stompClient.send("/app/chat", {}, JSON.stringify({"From": "Azad", "to": "Hi To Anand"}));
+    stompClient.send("/app/", {}, JSON.stringify({"From": "Azad", "to": "Hi To Anand"}));
 }
 
 function disconnect() {

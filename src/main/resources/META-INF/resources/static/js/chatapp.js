@@ -81,7 +81,7 @@ function back(event){
 
   console.log('I am in back function');
 
-  window.open('/chat', '_self');
+  window.open('/', '_self');
 }
 
 
@@ -166,7 +166,7 @@ function logout(event){
   })
   
   setTimeout(()=>{
-    window.open("/", "_self");
+    window.open("/authenticate", "_self");
   },1500)
 }
 

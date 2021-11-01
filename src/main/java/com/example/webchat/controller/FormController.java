@@ -10,9 +10,9 @@ public class FormController {
     @Autowired
     UserRepo repo;
 
-    @RequestMapping("/")
+    @RequestMapping("/authenticate")
     public String loginPage() {
-        return "login";
+        return "authenticate";
     }
 
     @RequestMapping("/forget")
@@ -30,7 +30,7 @@ public class FormController {
         return "setpassword";
     }
 
-    @RequestMapping("/chat")
+    @RequestMapping("/")
     public String ChatPage() {
         return "chat";
     }

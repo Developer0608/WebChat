@@ -119,7 +119,7 @@ function setpassword(event){
 		if (res.status == 200) {
 			 swal("Great", "Password Reset Successfully", "success");
 			 setTimeout(()=>{
-				window.open("/", "_self")		 
+				window.open("/chat", "_self")		 
 			},1000)	
 			  
 		} else {

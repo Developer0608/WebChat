@@ -22,14 +22,6 @@ public class UserDAO {
         jdbcTemplate.execute(insertQuery);
     }
 
-    //function to store the sent OTP in our DB.
-    public void update(User user, int otp) {
-
-        String updateQuery = String.format("UPDATE users SET otp = %d where email = '%s'", otp, user.getEmail());
-        System.out.println("[REPOSITORY]::[USERDAO]::[Update]::updateQuery " + updateQuery);
-        jdbcTemplate.execute(updateQuery);
-    }
-
     //function to extract the otp from the DB.
     public int getOtpByEmail(User user) {
 
@@ -40,22 +32,6 @@ public class UserDAO {
 
         var num = resultSet.get(0).get("otp").toString();
         return Integer.parseInt(num);
-    }
-
-    //function to update password in the DB.
-    public void UpdatePassword(User user) {
-        String updateQuery = String.format("UPDATE users SET password = '%s' where email = '%s'", user.getPassword(),
-                user.getEmail());
-        System.out.println("[REPOSITORY]::[USERDAO]::[Update]::updateQuery " + updateQuery);
-        jdbcTemplate.execute(updateQuery);
-    }
-
-    //function to update the username 
-    public void updateUserName(User user){
-        String updateQuery = String.format("UPDATE users SET username = '%s' where email = '%s'", user.getUsername(), user.getEmail());
-
-        System.out.println("[REPOSITORY]::[USERDAO]::[Update]::updateQuery" + updateQuery);
-        jdbcTemplate.execute(updateQuery);
     }
 
     //function to extract the password from DB.
@@ -71,30 +47,6 @@ public class UserDAO {
         return num;
     }
 
-    //function to update password in the DB.
-    public void updatePassword(User user){
-        String updateQuery = String.format("UPDATE users SET password = '%s' where email = '%s'", user.getPassword(), user.getEmail());
-
-        System.out.println("[REPOSITORY]::[USERDAO]::[Update]::updateQuery" + updateQuery);
-        jdbcTemplate.execute(updateQuery);
-    }
-
-    //function to search the user with the help of email.
-    public boolean searchByMail(User user){
-        String searchQuery = String.format("SELECT email FROM users WHERE email = '%s'", user.getEmail());
-
-        System.out.println("[REPOSITORY]::[USERDAO]::[Search]::searchQuery " + searchQuery);
-        var resultSet = jdbcTemplate.queryForList(searchQuery);
-        System.out.println("RESULTSET ::: " + resultSet);
-        
-        if(resultSet.isEmpty()){
-            return false;
-        }
-        
-        var num = resultSet.get(0).get("email").toString();
-        System.out.println("EMAIL :::: " + num);
-        return true;
-    }
 
     //function to extract the user data from the DB.
     public Map<String, Object> getUserDetail(UserDTO user){
@@ -107,17 +59,38 @@ public class UserDAO {
         return resultSet;
     }
 
-    //function to extract the username from DB.
-    public String getUserName(User user){
-        String searchQuery = String.format("select username from users where email = '%s'", user.getEmail());
+    public Map<String, Object> getUserDetail(String email){
+        String searchQuery = String.format("select username, email, password from users where email = '%s'", email);
 
         System.out.println("[REPOSITORY]::[USERDAO]::[Search]::searchQuery " + searchQuery);
-        var resultSet = jdbcTemplate.queryForList(searchQuery);
-        System.out.println("RESULTSET ::: " + resultSet);
+        var resultSet = jdbcTemplate.queryForMap(searchQuery);
+        System.out.println("RESULTSET :::: " + resultSet);
 
-        var num = resultSet.get(0).get("username").toString();
-        System.out.println("EMAIL :::: " + num);
+        return resultSet;
+    }
 
-        return num;
+    public Map<String, Object> updateUser(String email, UserDTO user) {
+
+        String setValues = "";
+        if (user.getOtp() != 0) {
+            setValues += String.format(" otp = %d", user.getOtp());
+        }
+
+        if (user.getUsername() != null) {
+            setValues += setValues.length() > 0 ? "," : "";
+            setValues += String.format("username = '%s'", user.getUsername());
+        }
+
+        if (user.getPassword() != null) {
+            setValues += setValues.length() > 0 ? "," : "";
+            setValues += String.format(" password = '%s'", user.getPassword());
+        }
+
+        String updateQuery = String.format("UPDATE users SET %s WHERE email = '%s'", setValues, email);
+
+        System.out.println("[UserDAO]::UpdateUser::updateQuery:: " + updateQuery);
+        jdbcTemplate.execute(updateQuery);
+
+        return getUserDetail(new UserDTO(email));
     }
 }

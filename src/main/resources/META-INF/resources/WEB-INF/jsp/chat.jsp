@@ -9,6 +9,7 @@
     <link rel="icon" href="../../static/pics/logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="../../static/css/chatapp.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+	<script src="../../static/js/validate.js"></script>
 </head>
 
 <body>

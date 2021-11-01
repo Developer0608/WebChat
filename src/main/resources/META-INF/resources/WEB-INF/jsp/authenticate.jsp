@@ -22,7 +22,7 @@
                 <div class="social-container">
                     <a href="https://accounts.google.com/signin/v2/identifier?hl=en&continue=https%3A%2F%2Fmail.google.com%2Fmail&service=mail&ec=GAlAFw&flowName=GlifWebSignIn&flowEntry=AddSession" class="social" target="_blank"><i class="fab fa-google-plus-g"></i></a>
                 </div>
-                <input type="text" placeholder="Name" id="name" required="required" />
+                <input type="text" placeholder="Name" id="username" required="required" />
                 <input type="email" placeholder="Email" id="email" required="required" />
                 <input type="password" placeholder="Password" id="password" required="required" />
                 <input type="password" placeholder="Confirm Password" id="confirm-password" required="required" />
@@ -73,6 +73,6 @@
         </p>
     </footer>
 </body>
-<script src="../../static/js/login.js"></script>
+<script src="../../static/js/authenticate.js"></script>
 
 </html>

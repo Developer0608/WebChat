@@ -26,7 +26,7 @@ function login(event) {
 		return;
 	}
 
-	fetch("http://localhost:8086/login", {
+	fetch("http://localhost:8086/authenticate", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"
@@ -48,10 +48,12 @@ function login(event) {
 		if(res) {
 			swal("Great!", "LoggedIn Successfully", "success");
 			
-			localStorage.setItem('loggedUser', JSON.stringify(res));
+			localStorage.setItem('email', JSON.stringify(res.email));
+			localStorage.setItem('username', JSON.stringify(res.username));
+			localStorage.setItem('token', JSON.stringify(res.jwttoken))
 			console.log(res);
 			setTimeout(()=>{
-				window.open('chat', "_self");
+				window.open('/', "_self");
 			},500);
 		}
 	})
@@ -65,7 +67,7 @@ function login(event) {
 function signup(event){
 	event.preventDefault();
 
-	const username = document.getElementById("name").value;
+	const username = document.getElementById("username").value;
 	const user_email = document.getElementById("email").value;
 	const user_password = document.getElementById("password").value;
 	const confirm_password = document.getElementById("confirm-password").value;
@@ -80,7 +82,7 @@ function signup(event){
 	if(user_password != confirm_password){
 		swal("OOPS!!!!!!", "Passsword Mis-match", "error");
 	}else{
-		fetch("http://localhost:8086/signup" , {
+		fetch("http://localhost:8086/register" , {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
