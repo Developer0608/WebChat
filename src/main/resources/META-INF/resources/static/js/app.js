@@ -1,10 +1,6 @@
 
 let stompClient;
 
-function test() {
-    console.log('############');
-}
-
 console.log('>>>>>>>>>>>');
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);

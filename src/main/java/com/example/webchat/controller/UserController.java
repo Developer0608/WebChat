@@ -1,11 +1,9 @@
 package com.example.webchat.controller;
 
 import java.util.Map;
-
 import com.example.webchat.dto.UserDTO;
 import com.example.webchat.model.User;
 import com.example.webchat.service.UserService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -117,13 +115,10 @@ public class UserController {
         System.out.println("Password :::::: " + userParam.getPassword() + "Email :: " + userParam.getEmail());
         
         User user = new User();
-
         user.setEmail(userParam.getEmail());
         user.setPassword(userParam.getPassword());
 
         boolean result = userService.checkpassword(user);
-        
-         
         if(result == true){
             return new ResponseEntity<>(HttpStatus.OK);
         }
@@ -137,10 +132,9 @@ public class UserController {
         System.out.println("EMAIL :::::::" + userParam.getEmail());
 
         User user = new User();
-
         user.setEmail(userParam.getEmail());
+
         boolean result = userService.searchByMail(user);
-        
         if(result == true){
             return new ResponseEntity<>(HttpStatus.OK);
         }

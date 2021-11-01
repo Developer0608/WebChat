@@ -9,6 +9,7 @@ import java.util.Random;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
  
+//class to encrypt and decrypt the password .
 public class PasswordUtils {
     
     private static final Random RANDOM = new SecureRandom();
@@ -48,15 +49,10 @@ public class PasswordUtils {
     }
     
     //function to verify the entered password is correct or not
-    public static boolean verifyUserPassword(String providedPassword,
-            String securedPassword, String salt)
-    {
+    public static boolean verifyUserPassword(String providedPassword, String securedPassword, String salt) {
         boolean returnValue = false;
         
-        // Generate New secure password with the same salt
         String newSecurePassword = generateSecurePassword(providedPassword, salt);
-        
-        // Check if two passwords are equal
         returnValue = newSecurePassword.equalsIgnoreCase(securedPassword);
         
         return returnValue;

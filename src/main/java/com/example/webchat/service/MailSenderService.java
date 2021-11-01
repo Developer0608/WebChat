@@ -11,6 +11,7 @@ public class MailSenderService {
     @Autowired
     private JavaMailSender javaMailSender;
 
+    //function to send the mail
     public void sendmail(String to, String body, String topic) {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         simpleMailMessage.setFrom("chatapp481@gmail.com");
