@@ -48,9 +48,9 @@ function login(event) {
 		if(res) {
 			swal("Great!", "LoggedIn Successfully", "success");
 			
-			localStorage.setItem('email', JSON.stringify(res.email));
-			localStorage.setItem('username', JSON.stringify(res.username));
-			localStorage.setItem('token', JSON.stringify(res.jwttoken))
+			localStorage.setItem('email', (res.email));
+			localStorage.setItem('username', (res.username));
+			localStorage.setItem('token', (res.jwttoken))
 			console.log(res);
 			setTimeout(()=>{
 				window.open('/', "_self");

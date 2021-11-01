@@ -1,8 +1,4 @@
-user = localStorage.getItem("loggedUser");
-userObj = JSON.parse(user);
-console.log(userObj);
-
-document.getElementById("loggeduser").innerHTML = userObj.username;
+document.getElementById("loggeduser").innerHTML = localStorage.getItem('username');
 
 $("#profile-img").click(function() {
 	$("#status-options").toggleClass("active");

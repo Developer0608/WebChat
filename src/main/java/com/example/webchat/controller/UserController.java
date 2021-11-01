@@ -62,7 +62,7 @@ public class UserController {
     public ResponseEntity<?> getUser(@PathVariable("email") String email) throws Exception {
         UserDTO user = new UserDTO(email);
 
-        return ResponseEntity.ok(userService.getUserDetail(user));
+        return ResponseEntity.ok(userService.getUserDetail(u));
     }
 
 }
