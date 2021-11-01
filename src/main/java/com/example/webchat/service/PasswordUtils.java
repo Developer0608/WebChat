@@ -44,7 +44,6 @@ public class PasswordUtils {
         byte[] securePassword = hash(password.toCharArray(), salt.getBytes());
  
         returnValue = Base64.getEncoder().encodeToString(securePassword);
- 
         return returnValue;
     }
     
