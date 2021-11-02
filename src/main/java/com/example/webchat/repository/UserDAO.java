@@ -35,8 +35,8 @@ public class UserDAO {
     }
 
     //function to extract the password from DB.
-    public String checkpassword(User user){
-        String selectQuery = String.format("SELECT password from users where email = '%s' ", user.getEmail());
+    public String checkpassword(String email){
+        String selectQuery = String.format("SELECT password from users where email = '%s' ", email);
 
         System.out.println("[REPOSITORY]::[USERDAO]::[Select]::SelectQuery " + selectQuery);
         var resultSet = jdbcTemplate.queryForList(selectQuery);

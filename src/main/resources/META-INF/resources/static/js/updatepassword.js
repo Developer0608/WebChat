@@ -4,13 +4,9 @@ function updatePassword(event){
     const oldpassword = document.getElementById('oldpassword').value;
     const newpassword = document.getElementById('newpassword').value;
     const confirmpassword = document.getElementById('confirmpassword').value;
-  
-    console.log(email, oldpassword, newpassword, confirmpassword);
 
-    user = localStorage.getItem("loggedUser");
-    userObj = JSON.parse(user);
-    console.log(userObj);
-    var email = userObj.email;
+    const email = localStorage.getItem('email');
+    console.log(email, oldpassword, newpassword, confirmpassword);
 
     console.log(">>>>>>> " , (email));
     if(oldpassword == newpassword){
@@ -35,6 +31,7 @@ function updatePassword(event){
           })		
         }).then(data => data).then(res => {
             if (res.status == 200) {
+               console.log('Gonna call setpassword now ');
                fetch("http://localhost:8086/setpassword", {
                   method: "POST",
                   headers: {

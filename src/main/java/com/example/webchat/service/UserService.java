@@ -1,7 +1,6 @@
 package com.example.webchat.service;
 
 import java.util.Map;
-import java.util.Random;
 import com.example.webchat.dto.UserDTO;
 import com.example.webchat.model.User;
 import com.example.webchat.repository.UserDAO;
@@ -143,4 +142,13 @@ public class UserService {
 
         return userDAO.updateUser(email, user);
     } 
+
+    public boolean validatePassword(UserDTO user){
+        String email = user.getEmail();
+
+        String password = userDAO.checkpassword(email);
+
+        return bcryptEncoder.matches(user.getPassword(),password);
+         
+    }
 }

@@ -50,7 +50,7 @@
 				</div>
 				<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
 					<div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
-						<h3 class="mb-4">Account Settings</h3>
+						<h3 class="mb-4">UPDATE USERNAME</h3>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
@@ -66,7 +66,7 @@
 						</div>
 					</div>
 					<div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
-						<h3 class="mb-4">Password Settings</h3>
+						<h3 class="mb-4">UPDATE PASSWORD</h3>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
