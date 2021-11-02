@@ -71,6 +71,7 @@ public class UserDAO {
 
     public Map<String, Object> updateUser(String email, UserDTO user) {
 
+        System.out.println("######## USER######" + user);
         String setValues = "";
         if (user.getOtp() != 0) {
             System.out.println("I am setting up OTP");

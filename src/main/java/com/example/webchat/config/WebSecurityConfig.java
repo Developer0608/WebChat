@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
             "/otp",
             "/setpassword",
             "/",
-            "/sendotp",
+            "/send-otp",
             "/setting",
             "/contact",
             "/websocket",

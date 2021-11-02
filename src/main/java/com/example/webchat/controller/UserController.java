@@ -23,17 +23,17 @@ public class UserController {
     Environment env;
 
 
-    @RequestMapping(value = "/sendotp", method = RequestMethod.POST)
-    public ResponseEntity sendotp(@RequestBody UserDTO userParam) throws Exception {
-        System.out.println(">>>>>>>>>" + userParam.getEmail());
-        UserDTO user = new UserDTO();
+    @RequestMapping(value = "/send-otp", method = RequestMethod.POST)
+    public ResponseEntity<?> sendotp(@RequestBody UserDTO userParam) throws Exception {
+        UserDTO user = new UserDTO(userParam.getEmail());
 
         user.setEmail(userParam.getEmail());
         String email = user.getEmail();
 
-        System.out.println("I AM IN SENDOTP");
         var result = userService.getUserDetail(email);
-        if(result != null){
+        user.setUsername(result.get("username").toString());
+
+        if (!result.isEmpty()) {
             userService.otpGenerator(user);
             return new ResponseEntity<>(HttpStatus.OK);
         }

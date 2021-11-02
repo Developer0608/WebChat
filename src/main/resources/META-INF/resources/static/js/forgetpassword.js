@@ -8,7 +8,7 @@ function forget(event){
 		swal("OOPS!!!!!!", "Fill Up all the Columns", "warning");
 		return;
 	}
-	fetch("http://localhost:8086/sendotp", {
+	fetch("http://localhost:8086/send-otp", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"
