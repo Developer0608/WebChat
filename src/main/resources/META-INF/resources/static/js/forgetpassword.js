@@ -62,7 +62,7 @@ function Otp(event){
 		swal("OOPS!!!!!!", "Please Enter the OTP", "warning");
 		return;
 	}
-	fetch("http://localhost:8086/checkotp", {
+	fetch("http://localhost:8086/check-otp", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"
@@ -119,7 +119,7 @@ function setpassword(event){
 		if (res.status == 200) {
 			 swal("Great", "Password Reset Successfully", "success");
 			 setTimeout(()=>{
-				window.open("/chat", "_self")		 
+				window.open("/", "_self")		 
 			},1000)	
 			  
 		} else {

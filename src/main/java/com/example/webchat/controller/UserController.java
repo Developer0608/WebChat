@@ -40,7 +40,7 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
-    @RequestMapping(value = "/checkotp", method = RequestMethod.POST)
+    @RequestMapping(value = "/check-otp", method = RequestMethod.POST)
     public ResponseEntity checkotp(@RequestBody UserDTO userParam) throws Exception {
         System.out.println(">>>>>>>>>>>>" + userParam.getOtp() + ">>>>>" + userParam.getEmail());
 
@@ -54,6 +54,16 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    }
+
+    @RequestMapping(value = "/setpassword", method = RequestMethod.POST)
+    public ResponseEntity<?> setpassword(@RequestBody UserDTO userParam) throws Exception {
+
+        System.out.println("Set>>>>>>>>" + userParam.getPassword() + ">>>>>>>>>>" + userParam.getEmail());
+        String email = userParam.getEmail();
+
+        userService.updateUser(email , userParam);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/users/{email}", method = RequestMethod.PUT)

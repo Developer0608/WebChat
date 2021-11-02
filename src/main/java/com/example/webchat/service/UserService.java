@@ -1,7 +1,6 @@
 package com.example.webchat.service;
 
 import java.util.Map;
-import java.util.Optional;
 import java.util.Random;
 import com.example.webchat.dto.UserDTO;
 import com.example.webchat.model.User;
@@ -52,11 +51,7 @@ public class UserService {
         +"                        <td style='height:80px;'>&nbsp;</td> \n"
         +"                    </tr> \n"
         +"                    <tr> \n"
-        +"                        <td style='text-align:center;'> \n"
-        +"                          <a href='https://rakeshmandal.com' title='logo' target='_blank'> \n"
-        +"                            <img width='60' src='https://i.ibb.co/hL4XZp2/android-chrome-192x192.png' title='logo' alt='logo'> \n"
-        +"                          </a> \n"
-        +"                        </td> \n"
+        +"                         \n"
         +"                    </tr> \n"
         +"                    <tr> \n"
         +"                        <td style='height:20px;'>&nbsp;</td> \n"
@@ -90,9 +85,7 @@ public class UserService {
         +"                        <td style='height:20px;'>&nbsp;</td> \n"
         +"                    </tr> \n"
         +"                    <tr> \n"
-        +"                        <td style='text-align:center;'> \n"
-        +"                            <p style='font-size:14px; color:rgba(69, 80, 86, 0.7411764705882353); line-height:18px; margin:0 0 0;'>&copy; <strong>www.webchatapp.com</strong></p> \n"
-        +"                        </td> \n"
+        +"                         \n"
         +"                    </tr> \n"
         +"                    <tr> \n"
         +"                        <td style='height:80px;'>&nbsp;</td> \n"
@@ -110,8 +103,7 @@ public class UserService {
 
     //function to generate random OTP and call mail sender service to send mail.
     public void otpGenerator(UserDTO user) {
-        Random rand = new Random();
-        int otp_number = rand.nextInt(9999);
+        int otp_number = (int)Math.floor(Math.random()*(9999-1000+1)+1000);
 
         user.setOtp(otp_number);
 
@@ -119,7 +111,6 @@ public class UserService {
         userDAO.updateUser(email, user);
         
         String emailBody = messageTemplate(user.getOtp());
-        
         try {
             mailSenderService.sendmail(user.getEmail(), emailBody, "OTP To Reset Password", 0);            
         } catch (Exception e) {
