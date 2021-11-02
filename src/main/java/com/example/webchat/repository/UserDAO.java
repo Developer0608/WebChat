@@ -1,5 +1,6 @@
 package com.example.webchat.repository;
 
+import java.util.HashMap;
 import java.util.Map;
 import com.example.webchat.dto.UserDTO;
 import com.example.webchat.model.User;
@@ -59,11 +60,17 @@ public class UserDAO {
         return resultSet;
     }
 
-    public Map<String, Object> getUserDetail(String email){
+    public Map<String, Object> getUserDetail(String email) {
         String searchQuery = String.format("select username, email, password, otp from users where email = '%s'", email);
 
-        System.out.println("[REPOSITORY]::[USERDAO]::[Search]::searchQuery " + searchQuery);
-        var resultSet = jdbcTemplate.queryForMap(searchQuery);
+        System.out.println("[REPOSITORY]::[USERDAO]::getUserDetail " + searchQuery);
+        Map<String, Object> resultSet = new HashMap<String, Object>();
+        try {
+            resultSet = jdbcTemplate.queryForMap(searchQuery);
+        } catch(Exception e) {
+            return resultSet;
+        }
+        
         System.out.println("RESULTSET :::: " + resultSet);
 
         return resultSet;

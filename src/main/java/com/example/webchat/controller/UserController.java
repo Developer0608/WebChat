@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin
 @RestController
 public class UserController {
 
@@ -23,6 +25,7 @@ public class UserController {
     Environment env;
 
 
+    @CrossOrigin
     @RequestMapping(value = "/send-otp", method = RequestMethod.POST)
     public ResponseEntity<?> sendotp(@RequestBody UserDTO userParam) throws Exception {
         UserDTO user = new UserDTO(userParam.getEmail());
@@ -31,14 +34,15 @@ public class UserController {
         String email = user.getEmail();
 
         var result = userService.getUserDetail(email);
-        user.setUsername(result.get("username").toString());
 
         if (!result.isEmpty()) {
+            user.setUsername(result.get("username").toString());
             userService.otpGenerator(user);
             return new ResponseEntity<>(HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
 
     @RequestMapping(value = "/check-otp", method = RequestMethod.POST)
     public ResponseEntity<?> checkotp(@RequestBody UserDTO userParam) throws Exception {
