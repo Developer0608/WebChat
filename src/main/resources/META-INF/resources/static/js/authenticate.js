@@ -50,7 +50,7 @@ function login(event) {
 			
 			localStorage.setItem('email', (res.email));
 			localStorage.setItem('username', (res.username));
-			localStorage.setItem('token', (res.jwttoken))
+			localStorage.setItem('token', `Bearer ${res.jwttoken}`)
 			console.log(res);
 			setTimeout(()=>{
 				console.log('I am in timeout function');

@@ -82,39 +82,34 @@ function back(event){
 
 
 //function to update username
-function account(event){
+function updateUsername(event){
   event.preventDefault();
   
-  var email = userObj.email;
-  var username = document.getElementById('username').value;
+  const username = document.getElementById('username').value;
   
-  console.log(email, username);
-
-  console.log('>>>>> ACCOUNT >>>>>');
+  const email = localStorage.getItem("email");
 
   if(username == ""){
     swal("OOPS!!!!!!", "Fill Up Username", "warning");
     return;
   }
 
-  fetch("http://localhost:8086/account" , {
-    method: "POST",
+  fetch(`http://localhost:8086/users/${email}` , {
+    method: "PUT",
 		headers: {
-			"Content-Type": "application/json"
+			"Content-Type": "application/json",
+      "Authorization": localStorage.getItem("token")
 		},
 		body: JSON.stringify({
       username: username,
 			email: email, 
 		})
-	}).then(data => data).then(res => {
-		if (res.status == 200) {
+	}).then(data => data.json()).then(res => {
+      localStorage.setItem("username", res.username);
 			swal("Great!", "Updated Successfully", "success");
 			setTimeout(()=>{
 				window.open('setting', "_self");
 			},1500)
-		} else {
-			swal("OOPS!!!!!!", "Some Problem Occurred", "error");
-		}
 
 	})
 	.catch(err => {

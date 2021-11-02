@@ -61,7 +61,7 @@
 							 
 						</div>
 						<div>
-							<button class="btn btn-primary" onclick="account(event)">Update</button>
+							<button class="btn btn-primary" onclick="updateUsername(event)">Update</button>
 							<button class="btn btn-light" onclick="cancel(event)">Cancel</button>
 						</div>
 					</div>
