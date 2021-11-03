@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../../static/css/chatapp.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 	<script src="../../static/js/validate.js"></script>
+	<script src="../../static/js/api.js"></script>
 	 
 </head>
 

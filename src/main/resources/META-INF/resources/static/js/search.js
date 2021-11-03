@@ -9,7 +9,7 @@ function search(event){
         return;
     }
     console.log(email);
-    fetch("http://localhost:8086/searchByMail", {
+    fetch(`${domain}/searchByMail`, {
         method: "POST",
         headers: {
             "Content-type": "application/json"

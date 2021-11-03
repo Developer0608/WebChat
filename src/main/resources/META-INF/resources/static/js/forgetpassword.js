@@ -1,3 +1,5 @@
+const domain = getDomain();
+
 //function to perform operations related to forget password 
 function forget(event){
 	event.preventDefault();
@@ -8,7 +10,7 @@ function forget(event){
 		swal("OOPS!!!!!!", "Fill Up all the Columns", "warning");
 		return;
 	}
-	fetch("http://localhost:8086/send-otp", {
+	fetch(`${domain}/send-otp`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"
@@ -62,7 +64,7 @@ function Otp(event){
 		swal("OOPS!!!!!!", "Please Enter the OTP", "warning");
 		return;
 	}
-	fetch("http://localhost:8086/check-otp", {
+	fetch(`${domain}/check-otp`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"
@@ -106,7 +108,7 @@ function setpassword(event){
 		return;
 	}
 
-	fetch("http://localhost:8086/setpassword", {
+	fetch(`${domain}/setpassword`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"

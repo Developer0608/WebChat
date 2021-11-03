@@ -10,7 +10,7 @@ signInButton.addEventListener('click', () => {
 	container.classList.remove("right-panel-active");
 });
 
-
+const domain = getDomain();
 
 //function to trigger when user is doing login
 function login(event) {
@@ -26,7 +26,7 @@ function login(event) {
 		return;
 	}
 
-	fetch("http://localhost:8086/authenticate", {
+	fetch(`${domain}/authenticate`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"
@@ -83,7 +83,7 @@ function signup(event){
 	if(user_password != confirm_password){
 		swal("OOPS!!!!!!", "Passsword Mis-match", "error");
 	}else{
-		fetch("http://localhost:8086/register" , {
+		fetch(`${domain}/register` , {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"

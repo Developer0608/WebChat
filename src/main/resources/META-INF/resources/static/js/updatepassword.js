@@ -20,7 +20,7 @@ function updatePassword(event){
     }
   
     if(newpassword == confirmpassword){
-        fetch("http://localhost:8086/checkpassword", {
+        fetch(`${domain}/checkpassword`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -32,7 +32,7 @@ function updatePassword(event){
         }).then(data => data).then(res => {
             if (res.status == 200) {
                console.log('Gonna call setpassword now ');
-               fetch("http://localhost:8086/setpassword", {
+               fetch(`${domain}/setpassword`, {
                   method: "POST",
                   headers: {
                     "Content-Type": "application/json"

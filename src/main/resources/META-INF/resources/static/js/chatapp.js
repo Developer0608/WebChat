@@ -80,7 +80,6 @@ function back(event){
   window.open('/', '_self');
 }
 
-
 //function to update username
 function updateUsername(event){
   event.preventDefault();
@@ -94,7 +93,7 @@ function updateUsername(event){
     return;
   }
 
-  fetch(`http://localhost:8086/users/${email}` , {
+  fetch(`${domain}/users/${email}` , {
     method: "PUT",
 		headers: {
 			"Content-Type": "application/json",
@@ -143,7 +142,7 @@ function setting(event){
 }
 
 
-//function to logout tthe loggedin user
+//function to logout the loggedin user
 function logout(event){
   event.preventDefault();
 
