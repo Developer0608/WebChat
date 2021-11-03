@@ -1,6 +1,7 @@
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
+const domain = getDomain();
 
 signUpButton.addEventListener('click', () => {
 	container.classList.add("right-panel-active");
@@ -9,8 +10,6 @@ signUpButton.addEventListener('click', () => {
 signInButton.addEventListener('click', () => {
 	container.classList.remove("right-panel-active");
 });
-
-const domain = getDomain();
 
 //function to trigger when user is doing login
 function login(event) {

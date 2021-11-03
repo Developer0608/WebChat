@@ -11,6 +11,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="../../static/js/api.js"></script>
 	<script src="../../static/js/validate.js"></script>
+	<script src="../../static/js/chatapp.js"></script>
 
 </head>
 <body>

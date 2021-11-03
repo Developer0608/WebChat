@@ -84,6 +84,7 @@ function back(event){
 function updateUsername(event){
   event.preventDefault();
   
+  console.log('I am in update username')
   const username = document.getElementById('username').value;
   
   const email = localStorage.getItem("email");
