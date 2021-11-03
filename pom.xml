@@ -50,7 +50,7 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
-
+		 
 		<!-- server dependency -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
@@ -98,7 +98,7 @@
 			<artifactId>jjwt</artifactId>
 			<version>0.9.1</version>
 		</dependency>
-
+		
 	</dependencies>
 
 
