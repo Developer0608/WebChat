@@ -9,6 +9,20 @@ $(".expand-button").click(function() {
 	$("#contacts").toggleClass("expanded");
 });
 
+
+// To update username on page load
+let activeContactUserName = $("#contact-list li.active p.name").text();
+$(".content p.username").text(activeContactUserName);
+
+// For contact select
+$("#contact-list").on('click', 'li', function() {
+  $("#contact-list li.active").removeClass('active');
+  $(this).addClass('active');
+  activeContactUserName = $("#contact-list li.active p.name").text();
+  $(".content p.username").text(activeContactUserName);
+
+});
+
 $("#status-options ul li").click(function() {
 	$("#profile-img").removeClass();
 	$("#status-online").removeClass("active");
@@ -37,7 +51,7 @@ function newMessage() {
 	if($.trim(message) == '') {
 		return false;
 	}
-	$('<li class="sent"><img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
+	$('<li class="sent"><p>' + message + '</p></li>').appendTo($('.messages ul'));
 	$('.message-input input').val(null);
 	$('.contact.active .preview').html('<span>You: </span>' + message);
 	$(".messages").animate({ scrollTop: $(document).height() }, "fast");
@@ -49,6 +63,7 @@ $('.submit').click(function() {
 
 $(window).on('keydown', function(e) {
   if (e.which == 13) {
+    sendMessage();
     newMessage();
     return false;
   }

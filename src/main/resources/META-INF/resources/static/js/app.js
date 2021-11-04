@@ -1,7 +1,27 @@
-
 let stompClient;
 
-console.log('>>>>>>>>>>>');
+
+const sockJs = new SockJS("/chat");
+console.log('Connecting......');
+console.log(sockJs);
+stompClient = Stomp.over(sockJs);
+console.log(stompClient);
+
+stompClient.connect({}, function(frame) {
+    setConnected(true);
+    console.log('Connected');
+    stompClient.subscribe(`/topic/messages/${localStorage.getItem("email")}`, function(serverMessage) {
+        console.log("#####################");
+        console.log(JSON.parse(serverMessage.body));
+
+        const receivedMessage = JSON.parse(serverMessage.body);
+        
+        $('<li class="replies"><p>' + receivedMessage + '</p></li>').appendTo($('.messages ul'));  
+        $('.contact.active .preview').html('<span>You: </span>' + receivedMessage);
+        $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+    })
+});
+
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
@@ -14,26 +34,14 @@ function setConnected(connected) {
     $("#greetings").html("");
 }
 
-function connectClient() {
-    console.log('>>>>>>>>>>..');
+function sendMessage() {
 
-	setConnected(true);
+    const activeUser = $("#contact-list li.active").attr("id");
+    console.log(activeUser);
 
-    const sockJs = new SockJS("/chat");
-    console.log('Connecting......');
-    console.log(sockJs);
-    stompClient = Stomp.over(sockJs);
-    console.log(stompClient);
-
-    stompClient.connect({}, function(frame) {
-        setConnected(true);
-        console.log('Connected');
-    });
-}
-
-function sendClient() {
-    console.log('Sending Message ', stompClient);
-    stompClient.send("/app/", {}, JSON.stringify({"From": "Azad", "to": "Hi To Anand"}));
+    message = $(".message-input input").val();
+    console.log('Sending Message ', message, stompClient);
+    stompClient.send("/app/chat", {}, JSON.stringify({"from": localStorage.getItem("email"), "to": activeUser, "message": message}));
 }
 
 function disconnect() {

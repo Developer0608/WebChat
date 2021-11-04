@@ -1,4 +1,4 @@
-package com.example.webchat;
+package com.example.webchat.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

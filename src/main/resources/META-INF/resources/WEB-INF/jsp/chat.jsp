@@ -9,9 +9,12 @@
     <link rel="icon" href="../../static/pics/logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="../../static/css/chatapp.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
 	<script src="../../static/js/validate.js"></script>
 	<script src="../../static/js/api.js"></script>
-	 
+	<script src="../../static/js/app.js"></script>
+	
 </head>
 
 <body>
@@ -23,7 +26,6 @@
 			<div class="wrap">
 				<img id="profile-img" src="https://static.thenounproject.com/png/3321515-200.png" class="online" alt="" />
 				<p id="loggeduser">Username</p>
-				 
 			</div>
 		</div>
 		<div id="search">
@@ -31,72 +33,23 @@
 			<input type="text" placeholder="Search contacts..." />
 		</div>
 		<div id="contacts">
-			<ul>
-				<li class="contact">
+			<ul id="contact-list">
+				<li class="contact active" id="sanand404@gmail.com">
 					<div class="wrap"> 
 						<img src="https://static.thenounproject.com/png/3321515-200.png" alt="" />
 						<div class="meta">
-							<p class="name">Krishna</p>
+							<p class="name">Anand</p>
 							<p class="preview">You just got LITT up, Mike.</p>
 						</div>
 					</div>
 				</li>
-				<li class="contact active">
+				<li class="contact" id="azadsingh42878@gmail.com">
 					<div class="wrap">
 						 
 						<img src="https://static.thenounproject.com/png/3321515-200.png" alt="" />
 						<div class="meta">
-							<p class="name">Rushabh</p>
+							<p class="name">Azad</p>
 							<p class="preview">Wrong. You take the gun, or you pull out a bigger one. Or, you call their bluff. Or, you do any one of a hundred and forty six other things.</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact">
-					<div class="wrap">
-						<img src="https://static.thenounproject.com/png/3321515-200.png" alt="" />
-						<div class="meta">
-							<p class="name">Lorean</p>
-							<p class="preview">I was thinking that we could have chicken tonight, sounds good?</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact">
-					<div class="wrap">
-						 
-						<img src="https://static.thenounproject.com/png/3321515-200.png" alt="" />
-						<div class="meta">
-							<p class="name">Ram</p>
-							<p class="preview">Mike, I know everything! I'm Donna..</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact">
-					<div class="wrap">
-						 
-						<img src="https://static.thenounproject.com/png/3321515-200.png" alt="" />
-						<div class="meta">
-							<p class="name">Jessica Pearson</p>
-							<p class="preview">Have you finished the draft on the Hinsenburg deal?</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact">
-					<div class="wrap">
- 
-						<img src="https://static.thenounproject.com/png/3321515-200.png" alt="" />
-						<div class="meta">
-							<p class="name">Rahul</p>
-							<p class="preview">Thanks Mike! :)</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact">
-					<div class="wrap">
-						 
-						<img src="https://static.thenounproject.com/png/3321515-200.png" alt="" />
-						<div class="meta">
-							<p class="name">Daniel Hardman</p>
-							<p class="preview">We'll meet again, Mike. Tell Jessica I said 'Hi'.</p>
 						</div>
 					</div>
 				</li>
@@ -110,7 +63,7 @@
 	<div class="content">
 		<div class="contact-profile">
 			<img src="https://static.thenounproject.com/png/3321515-200.png" alt="" />
-			<p>Azad</p>
+			<p class="username">Azad</p>
 			<div class="social-media">
 				<i class='fas fa-video'></i>
                 <i class='fas fa-phone-volume'></i>
@@ -119,48 +72,38 @@
 		<div class="messages">
 			<ul>
 				<li class="sent">
-					<img src="https://static.thenounproject.com/png/3321515-200.png" alt="" />
 					<p>How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!</p>
 				</li>
 				<li class="replies">
-					<img src="https://static.thenounproject.com/png/3321515-200.png" alt="" />
 					<p>When you're backed against the wall, break the god damn thing down.</p>
 				</li>
 				<li class="replies">
-					<img src="https://static.thenounproject.com/png/3321515-200.png" alt="" />
 					<p>Excuses don't win championships.</p>
 				</li>
 				<li class="sent">
-					<img src="https://static.thenounproject.com/png/3321515-200.png" alt="" />
 					<p>Oh yeah, did Michael Jordan tell you that?</p>
 				</li>
 				<li class="replies">
-					<img src="https://static.thenounproject.com/png/3321515-200.png" alt="" />
 					<p>No, I told him that.</p>
 				</li>
 				<li class="replies">
-					<img src="https://static.thenounproject.com/png/3321515-200.png" alt="" />
 					<p>What are your choices when someone puts a gun to your head?</p>
 				</li>
 				<li class="sent">
-					<img src="https://static.thenounproject.com/png/3321515-200.png" alt="" />
 					<p>What are you talking about? You do what they say or they shoot you.</p>
 				</li>
 				<li class="replies">
-					<img src="https://static.thenounproject.com/png/3321515-200.png" alt="" />
 					<p>get out.</p>
 				</li>
 			</ul>
 		</div>
 		<div class="message-input">
 			<div class="wrap">
-			<input type="text" placeholder="Write your message..." />
-             
+			<input type="text" id="messageText" placeholder="Write your message..." />
 			<i class="fa fa-paperclip attachment" aria-hidden="true">
 				<!-- <input id="file" type="file" name="file" placeholder="Photo" required="" capture> -->
 			</i>
-			<button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>  
-            
+			<button class="submit" onclick="sendMessage()" one><i class="fa fa-paper-plane" aria-hidden="true"></i></button>  
 			</div>
 		</div>
 
