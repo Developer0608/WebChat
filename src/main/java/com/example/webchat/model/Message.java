@@ -1,5 +1,6 @@
 package com.example.webchat.model;
-import java.time.LocalDate;
+
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,9 +12,9 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @Entity
 @EntityScan
-@Table(name = "messagetable")
-public class MessageTable {
-    
+@Table(name = "message")
+public class Message {
+
     @Id
     @Column(name = "uuid")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,7 +30,7 @@ public class MessageTable {
     private String message;
 
     @Column(name = "time")
-    private LocalDate time;
+    private LocalDateTime time;
 
     public Long getUuid() {
         return uuid;
@@ -55,7 +56,6 @@ public class MessageTable {
         this.to = to;
     }
 
-    
     public String getMessage() {
         return message;
     }
@@ -64,11 +64,11 @@ public class MessageTable {
         this.message = message;
     }
 
-    public LocalDate getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 
-    public void setTime(LocalDate time) {
+    public void setTime(LocalDateTime time) {
         this.time = time;
     }
 }

@@ -24,7 +24,6 @@ public class UserController {
     @Autowired
     Environment env;
 
-
     @CrossOrigin
     @RequestMapping(value = "/send-otp", method = RequestMethod.POST)
     public ResponseEntity<?> sendotp(@RequestBody UserDTO userParam) throws Exception {
@@ -43,12 +42,10 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-
     @RequestMapping(value = "/check-otp", method = RequestMethod.POST)
     public ResponseEntity<?> checkotp(@RequestBody UserDTO userParam) throws Exception {
         System.out.println(">>>>>>>>>>>>" + userParam.getOtp() + ">>>>>" + userParam.getEmail());
 
-        
         User user = new User();
 
         user.setEmail(userParam.getEmail());
@@ -60,14 +57,13 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
-    
     @RequestMapping(value = "/setpassword", method = RequestMethod.POST)
     public ResponseEntity<?> setpassword(@RequestBody UserDTO userParam) throws Exception {
 
         System.out.println("Set>>>>>>>>" + userParam.getPassword() + ">>>>>>>>>>" + userParam.getEmail());
         String email = userParam.getEmail();
 
-        userService.updateUser(email , userParam);
+        userService.updateUser(email, userParam);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -75,7 +71,7 @@ public class UserController {
     public ResponseEntity<?> passwordCheck(@RequestBody UserDTO userParam) throws Exception {
         System.out.println("Password :::::: " + userParam.getPassword() + "Email :: " + userParam.getEmail());
 
-        if(userService.validatePassword(userParam) == true){
+        if (userService.validatePassword(userParam) == true) {
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);

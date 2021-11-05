@@ -1,5 +1,5 @@
 package com.example.webchat.repository;
 
-public class MessageTableDAO {
-    
+public class MessageDAO {
+
 }

@@ -1,21 +1,22 @@
 package com.example.webchat.dto;
 
-import java.sql.Time;
+import java.time.LocalDateTime;
 
-import org.hibernate.type.descriptor.sql.VarcharTypeDescriptor;
+import org.springframework.stereotype.Component;
 
-public class MessageTableDTO {
-    private VarcharTypeDescriptor uuid;
+@Component
+public class MessageDTO {
+    private Long uuid;
     private String from;
     private String to;
     private String message;
-    private Time time;
+    private LocalDateTime time;
 
-    public VarcharTypeDescriptor getUuid() {
+    public Long getUuid() {
         return uuid;
     }
 
-    public void setUuid(VarcharTypeDescriptor uuid) {
+    public void setUuid(Long uuid) {
         this.uuid = uuid;
     }
 
@@ -43,11 +44,11 @@ public class MessageTableDTO {
         this.message = message;
     }
 
-    public Time getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(LocalDateTime time) {
         this.time = time;
     }
 
@@ -56,5 +57,5 @@ public class MessageTableDTO {
         return "MessageTableDTO [from=" + from + ", message=" + message + ", time=" + time + ", to=" + to + ", uuid="
                 + uuid + "]";
     }
-    
+
 }
