@@ -1,39 +1,40 @@
 package com.example.webchat.dto;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import org.springframework.stereotype.Component;
 
 @Component
 public class MessageDTO {
-    private Long uuid;
-    private String from;
-    private String to;
+    private UUID uuid;
+    private String sender;
+    private String receiver;
     private String message;
     private LocalDateTime time;
 
-    public Long getUuid() {
+    public UUID getUuid() {
         return uuid;
     }
 
-    public void setUuid(Long uuid) {
+    public void setUuid(UUID uuid) {
         this.uuid = uuid;
     }
 
-    public String getFrom() {
-        return from;
+    public String getSender() {
+        return sender;
     }
 
-    public void setFrom(String from) {
-        this.from = from;
+    public void setSender(String sender) {
+        this.sender = sender;
     }
 
-    public String getTo() {
-        return to;
+    public String getReceiver() {
+        return receiver;
     }
 
-    public void setTo(String to) {
-        this.to = to;
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
     }
 
     public String getMessage() {
@@ -54,8 +55,7 @@ public class MessageDTO {
 
     @Override
     public String toString() {
-        return "MessageTableDTO [from=" + from + ", message=" + message + ", time=" + time + ", to=" + to + ", uuid="
-                + uuid + "]";
+        return "MessageDTO [message=" + message + ", receiver=" + receiver + ", sender=" + sender + ", time=" + time
+                + ", uuid=" + uuid + "]";
     }
-
 }

@@ -1,13 +1,15 @@
 package com.example.webchat.model;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @Entity
@@ -16,15 +18,16 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 public class Message {
 
     @Id
-    @Column(name = "uuid")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long uuid;
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @GeneratedValue(generator = "uuid")
+    @Column(name = "uuid", unique = true, nullable = false)
+    private UUID uuid;
 
-    @Column(name = "from")
-    private String from;
+    @Column(name = "sender")
+    private String sender;
 
-    @Column(name = "to")
-    private String to;
+    @Column(name = "receiver")
+    private String receiver;
 
     @Column(name = "message")
     private String message;
@@ -32,28 +35,28 @@ public class Message {
     @Column(name = "time")
     private LocalDateTime time;
 
-    public Long getUuid() {
+    public UUID getUuid() {
         return uuid;
     }
 
-    public void setUuid(Long uuid) {
+    public void setUuid(UUID uuid) {
         this.uuid = uuid;
     }
 
-    public String getFrom() {
-        return from;
+    public String getSender() {
+        return sender;
     }
 
-    public void setFrom(String from) {
-        this.from = from;
+    public void setSender(String sender) {
+        this.sender = sender;
     }
 
-    public String getTo() {
-        return to;
+    public String getReceiver() {
+        return receiver;
     }
 
-    public void setTo(String to) {
-        this.to = to;
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
     }
 
     public String getMessage() {
