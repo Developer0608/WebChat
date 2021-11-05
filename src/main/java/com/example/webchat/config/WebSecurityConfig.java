@@ -19,8 +19,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
-    
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
@@ -31,46 +31,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     JwtRequestFilter jwtRequestFilter;
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder());
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    
+
     @Bean
     @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception{
+    public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
 
     @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception{
-        httpSecurity.csrf().disable().authorizeRequests().antMatchers(
-            "/authenticate", 
-            "/register",
-            "/forget",
-            "/otp",
-            "/users",
-            "/chat/**",
-            "/setpassword",
-            "/checkpassword",
-            "/",
-            "/send-otp",
-            "/check-otp",
-            "/setting",
-            "/contact",
-            "/websocket",
-            "/css/**", 
-            "/js/**", 
-            "/images/**",
-            "/static/**",
-            "/sweetalert2.all.min.js"
-        )
-        .permitAll()
-        .anyRequest().authenticated().and().exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity.csrf().disable().authorizeRequests()
+                .antMatchers("/authenticate", "/register", "/forget", "/otp", "/users", "/app/chat", "/chat/**",
+                        "/setpassword", "/checkpassword", "/", "/send-otp", "/check-otp", "/setting", "/contact",
+                        "/websocket", "/css/**", "/js/**", "/images/**", "/static/**", "/sweetalert2.all.min.js")
+                .permitAll().anyRequest().authenticated().and().exceptionHandling()
+                .authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }

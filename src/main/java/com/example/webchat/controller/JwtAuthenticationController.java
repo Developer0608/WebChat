@@ -28,43 +28,41 @@ public class JwtAuthenticationController {
 
     @Autowired
     UserService userService;
-    
+
     @Autowired
-	private com.example.webchat.service.JwtTokenUtil jwtTokenUtil;
+    private com.example.webchat.service.JwtTokenUtil jwtTokenUtil;
 
     @Autowired
     JwtUserDetailsService userDetailsService;
 
-	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
+    @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
         authenticate(authenticationRequest.getEmail(), authenticationRequest.getPassword());
 
-        // We are overriding `loadUserByUsername`
-        // NOTE:: DO NOT CHANGE METHOD NAME
-        final UserDetails userDetails = userDetailsService
-				.loadUserByUsername(authenticationRequest.getEmail());
-      
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getEmail());
+
         final String token = jwtTokenUtil.generateToken(userDetails);
 
-        var dbUser = userService.getUserDetail(new UserDTO(userDetails.getUsername(), authenticationRequest.getEmail(), "", 0));
+        var dbUser = userService
+                .getUserDetail(new UserDTO(userDetails.getUsername(), authenticationRequest.getEmail(), "", 0));
 
-        return ResponseEntity.ok(new JwtResponse(token, dbUser.get("username").toString(), dbUser.get("email").toString()));
+        return ResponseEntity
+                .ok(new JwtResponse(token, dbUser.get("username").toString(), dbUser.get("email").toString()));
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-	public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
-		return ResponseEntity.ok(userDetailsService.save(user));
-	}
+    public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
+        return ResponseEntity.ok(userDetailsService.save(user));
+    }
 
     private void authenticate(String username, String password) throws Exception {
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));            
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
         } catch (DisabledException e) {
-			throw new Exception("USER_DISABLED", e);
-		} catch (BadCredentialsException e) {
-			throw new Exception("INVALID_CREDENTIALS", e);
-		}
+            throw new Exception("USER_DISABLED", e);
+        } catch (BadCredentialsException e) {
+            throw new Exception("INVALID_CREDENTIALS", e);
+        }
     }
-
 
 }
