@@ -53,7 +53,16 @@
 						</div>
 					</div>
 				</li>
-				
+				<li class="contact" id="test122@gmail.com">
+					<div class="wrap">
+						 
+						<img src="https://static.thenounproject.com/png/3321515-200.png" alt="" />
+						<div class="meta">
+							<p class="name">Rishabh</p>
+							<p class="preview">Wrong. You take the gun, or you pull out a bigger one. Or, you call their bluff. Or, you do any one of a hundred and forty six other things.</p>
+						</div>
+					</div>
+				</li>	
 			</ul>
 		</div>
 		<div id="bottom-bar">
