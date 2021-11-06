@@ -1,4 +1,4 @@
-document.getElementById("loggeduser").innerHTML = localStorage.getItem('username');
+document.getElementById("loggeduser").innerHTML = localStorage.getItem("username");
 
 $("#profile-img").click(function() {
 	$("#status-options").toggleClass("active");
@@ -11,8 +11,8 @@ $(".expand-button").click(function() {
 
 
 // To update username on page load
-let activeContactUserName = $("#contact-list li.active p.name").text();
-$(".content p.username").text(activeContactUserName);
+// let activeContactUserName = $("#contact-list li.active p.name").text();
+// $(".content p.username").text(activeContactUserName);
 
 // For contact select
 $("#contact-list").on('click', 'li', function() {
@@ -121,6 +121,7 @@ function updateUsername(event){
 		})
 	}).then(data => data.json()).then(res => {
       localStorage.setItem("username", res.username);
+      // document.getElementById("loggeduser").innerHTML = localStorage.getItem("username");
 			swal("Great!", "Updated Successfully", "success");
 			setTimeout(()=>{
 				window.open('setting', "_self");

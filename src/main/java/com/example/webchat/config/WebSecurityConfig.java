@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable().authorizeRequests()
-                .antMatchers("/authenticate", "/register", "/forget", "/otp", "/users", "/app/chat", "/chat/**",
+                .antMatchers("/authenticate", "/register", "/forget", "/otp", "/users/**", "/app/chat", "/chat/**",
                         "/setpassword", "/checkpassword", "/", "/send-otp", "/check-otp", "/setting", "/contact",
                         "/websocket", "/css/**", "/js/**", "/images/**", "/static/**", "/sweetalert2.all.min.js")
                 .permitAll().anyRequest().authenticated().and().exceptionHandling()
