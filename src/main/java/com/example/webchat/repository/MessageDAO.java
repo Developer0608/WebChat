@@ -2,6 +2,8 @@ package com.example.webchat.repository;
 
 import com.example.webchat.dto.MessageDTO;
 
+import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -14,13 +16,24 @@ public class MessageDAO {
 
     public void saveMessage(MessageDTO messageDTO) throws Exception {
         String insertQuery = String.format(
-                "INSERT INTO message (uuid, sender, message, time, receiver) VALUES ('%s', '%s', '%s', '%s', '%s')",
-                messageDTO.getUuid(), messageDTO.getSender(), messageDTO.getMessage(), messageDTO.getTime(),
+                "INSERT INTO message (uuid, sender, messages, time, receiver) VALUES ('%s', '%s', '%s', '%s', '%s')",
+                messageDTO.getUuid(), messageDTO.getSender(), messageDTO.getMessages(), messageDTO.getTime(),
                 messageDTO.getReceiver());
 
         System.out.println("[REPOSITORY]:::[MESSAGEDAO]::::[SAVE]::::insertQuery" + insertQuery);
 
         jdbcTemplate.execute(insertQuery);
+    }
+
+    public List<Map<String, Object>> getMessage(String email) throws Exception {
+        String selectQuery = String.format(
+                "select sender, receiver, messages from message where receiver = '%s' or sender = '%s'", email, email);
+
+        System.out.println("[REPOSITORY]:::::[MESSAGEDAO]:::[SELECT]::selectQuery" + selectQuery);
+        var resultset = jdbcTemplate.queryForList(selectQuery);
+        System.out.println("[MESSAGES] :::: " + resultset);
+
+        return resultset;
     }
 
 }

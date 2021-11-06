@@ -1,6 +1,8 @@
 package com.example.webchat.controller;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import com.example.webchat.dto.MessageDTO;
@@ -9,9 +11,14 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class MessageController {
@@ -34,7 +41,7 @@ public class MessageController {
 
     messageDTO.setSender(jsonObject.get("from").getAsString());
     messageDTO.setReceiver(jsonObject.get("to").getAsString());
-    messageDTO.setMessage(jsonObject.get("message").getAsString());
+    messageDTO.setMessages(jsonObject.get("message").getAsString());
 
     UUID uuid = UUID.randomUUID();
     messageDTO.setUuid(uuid);
@@ -43,13 +50,23 @@ public class MessageController {
     messageDTO.setTime(now);
 
     System.out.println("UUID ::: " + messageDTO.getUuid() + "SENDER :: " + messageDTO.getReceiver() + " "
-        + "RECEIVER :: " + messageDTO.getReceiver() + " " + "MESSAGE :: " + messageDTO.getMessage() + " " + "TIME :: "
+        + "RECEIVER :: " + messageDTO.getReceiver() + " " + "MESSAGE :: " + messageDTO.getMessages() + " " + "TIME :: "
         + messageDTO.getTime());
 
     messageService.saveMessage(messageDTO);
     String sender = jsonObject.get("to").getAsString();
     this.simpMessagingTemplate.convertAndSend(String.format("/topic/messages/%s", sender),
         jsonObject.get("message").toString());
+  }
+
+  @RequestMapping(value = "/messages/{email}", method = RequestMethod.GET)
+  public ResponseEntity<?> getMessage(@PathVariable("email") String email) throws Exception {
+    System.out.println("EMAIL :::: " + email);
+
+    List<?> extractedMessage = messageService.getMessage(email);
+    System.out.println("MESSAGES ::::: " + extractedMessage);
+
+    return ResponseEntity.ok(extractedMessage);
   }
 
 }

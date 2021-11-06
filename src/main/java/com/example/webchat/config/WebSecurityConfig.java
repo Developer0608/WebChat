@@ -51,7 +51,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.csrf().disable().authorizeRequests()
                 .antMatchers("/authenticate", "/register", "/forget", "/otp", "/users/**", "/app/chat", "/chat/**",
                         "/setpassword", "/checkpassword", "/", "/send-otp", "/check-otp", "/setting", "/contact",
-                        "/websocket", "/css/**", "/js/**", "/images/**", "/static/**", "/sweetalert2.all.min.js")
+                        "/websocket", "/css/**", "/js/**", "/images/**", "/static/**", "/messages/**",
+                        "/sweetalert2.all.min.js")
                 .permitAll().anyRequest().authenticated().and().exceptionHandling()
                 .authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);

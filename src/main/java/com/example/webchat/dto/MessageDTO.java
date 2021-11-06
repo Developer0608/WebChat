@@ -10,7 +10,7 @@ public class MessageDTO {
     private UUID uuid;
     private String sender;
     private String receiver;
-    private String message;
+    private String messages;
     private LocalDateTime time;
 
     public UUID getUuid() {
@@ -37,12 +37,12 @@ public class MessageDTO {
         this.receiver = receiver;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMessages() {
+        return messages;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMessages(String messages) {
+        this.messages = messages;
     }
 
     public LocalDateTime getTime() {
@@ -55,7 +55,7 @@ public class MessageDTO {
 
     @Override
     public String toString() {
-        return "MessageDTO [message=" + message + ", receiver=" + receiver + ", sender=" + sender + ", time=" + time
+        return "MessageDTO [messages=" + messages + ", receiver=" + receiver + ", sender=" + sender + ", time=" + time
                 + ", uuid=" + uuid + "]";
     }
 }

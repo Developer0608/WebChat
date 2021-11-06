@@ -29,8 +29,8 @@ public class Message {
     @Column(name = "receiver")
     private String receiver;
 
-    @Column(name = "message")
-    private String message;
+    @Column(name = "messages")
+    private String messages;
 
     @Column(name = "time")
     private LocalDateTime time;
@@ -59,16 +59,17 @@ public class Message {
         this.receiver = receiver;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
+    
 
     public LocalDateTime getTime() {
         return time;
+    }
+        public String getMessages() {
+        return messages;
+    }
+
+    public void setMessages(String messages) {
+        this.messages = messages;
     }
 
     public void setTime(LocalDateTime time) {
