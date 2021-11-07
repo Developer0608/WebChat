@@ -53,6 +53,8 @@ function login(event) {
 			console.log(res);
 			setTimeout(()=>{
 				console.log('I am in timeout function');
+				console.log("Passed EMAIL ::: ", res.email)
+				getMessage(localStorage.getItem('email'));
 				window.open('/', "_self");
 			},500);
 		}

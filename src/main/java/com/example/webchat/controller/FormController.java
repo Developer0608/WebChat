@@ -36,17 +36,17 @@ public class FormController {
     }
 
     @RequestMapping("/setting")
-    public String SettingPage(){
+    public String SettingPage() {
         return "setting";
     }
 
     @RequestMapping("/contact")
-    public String ContactPage(){
+    public String ContactPage() {
         return "contact";
     }
 
     @RequestMapping("/websocket")
-    public String socket(){
+    public String socket() {
         return "socket";
     }
 }

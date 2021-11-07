@@ -14,10 +14,11 @@
 	<script src="../../static/js/validate.js"></script>
 	<script src="../../static/js/api.js"></script>
 	<script src="../../static/js/app.js"></script>
+	<script src="../../static/js/message.js"></script>
 	
 </head>
 
-<body>
+<body onload="getMessage('azadsingh42878@gmail.com')">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div id="frame">

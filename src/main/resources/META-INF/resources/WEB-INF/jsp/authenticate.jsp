@@ -11,6 +11,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="sweetalert2.all.min.js"></script>
     <script src="../../static/js/api.js"></script>
+    <script src="../../static/js/message.js"></script>
      
     <!-- <link rel="icon" href="../../static/pics/logo.jpg" type="image/x-icon"> -->
 </head>
