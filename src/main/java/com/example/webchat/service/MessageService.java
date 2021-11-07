@@ -31,4 +31,8 @@ public class MessageService {
     public List<?> getMessage(String email) throws Exception {
         return messageDAO.getMessage(email);
     }
+
+    public List<?> getContact(String email) throws Exception {
+        return messageDAO.getContact(email);
+    }
 }

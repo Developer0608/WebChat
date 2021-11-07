@@ -36,4 +36,15 @@ public class MessageDAO {
         return resultset;
     }
 
+    public List<Map<String, Object>> getContact(String email) throws Exception {
+        String selectQuery = String.format(
+                "select distinct u.username, u.email from users u INNER JOIN message m ON (u.email = m.sender or u.email = m.receiver) and (m.sender = '%s' or m.receiver = '%s') and u.email != '%s' ",
+                email, email, email);
+        System.out.println("[REPOSITORY]:::::[MESSAGEDAO]:::[SELECT]::selectQuery" + selectQuery);
+        var resultset = jdbcTemplate.queryForList(selectQuery);
+        System.out.println("[MESSAGES] ::: " + resultset);
+
+        return resultset;
+    }
+
 }

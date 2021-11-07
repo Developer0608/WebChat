@@ -15,10 +15,9 @@
 	<script src="../../static/js/api.js"></script>
 	<script src="../../static/js/app.js"></script>
 	<script src="../../static/js/message.js"></script>
-	
 </head>
 
-<body onload="getMessage('azadsingh42878@gmail.com')">
+<body onload="getContact(localStorage.getItem('email'))">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div id="frame">
@@ -35,35 +34,6 @@
 		</div>
 		<div id="contacts">
 			<ul id="contact-list">
-				<li class="contact active" id="sanand404@gmail.com">
-					<div class="wrap"> 
-						<img src="https://static.thenounproject.com/png/3321515-200.png" alt="" />
-						<div class="meta">
-							<p class="name">Anand</p>
-							<p class="preview">You just got LITT up, Mike.</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact" id="azadsingh42878@gmail.com">
-					<div class="wrap">
-						 
-						<img src="https://static.thenounproject.com/png/3321515-200.png" alt="" />
-						<div class="meta">
-							<p class="name">Azad</p>
-							<p class="preview">Wrong. You take the gun, or you pull out a bigger one. Or, you call their bluff. Or, you do any one of a hundred and forty six other things.</p>
-						</div>
-					</div>
-				</li>
-				<li class="contact" id="test122@gmail.com">
-					<div class="wrap">
-						 
-						<img src="https://static.thenounproject.com/png/3321515-200.png" alt="" />
-						<div class="meta">
-							<p class="name">Rishabh</p>
-							<p class="preview">Wrong. You take the gun, or you pull out a bigger one. Or, you call their bluff. Or, you do any one of a hundred and forty six other things.</p>
-						</div>
-					</div>
-				</li>	
 			</ul>
 		</div>
 		<div id="bottom-bar">
@@ -84,6 +54,9 @@
 			<ul>
 				<li class="sent">
 					<p>How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!</p>
+				</li>
+				<li class="sent">
+					<p>wrwrwre that I do?!</p>
 				</li>
 				<li class="replies">
 					<p>When you're backed against the wall, break the god damn thing down.</p>
@@ -123,4 +96,5 @@
 
 </body>
 <script src="../../static/js/chatapp.js"></script>
+<script src="../../static/js/contactlist.js"></script>
 </html>

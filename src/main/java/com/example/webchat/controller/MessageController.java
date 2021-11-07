@@ -72,4 +72,12 @@ public class MessageController {
     // return new ResponseEntity<>(HttpStatus.OK);
   }
 
+  @RequestMapping(value = "/contact-list/{email}", method = RequestMethod.GET)
+  public ResponseEntity<?> contactList(@PathVariable("email") String email) throws Exception {
+
+    List<?> extractedContact = messageService.getContact(email);
+    System.out.println("[CONTACT LIST] :::::: " + extractedContact);
+    return ResponseEntity.ok(extractedContact);
+  }
+
 }
