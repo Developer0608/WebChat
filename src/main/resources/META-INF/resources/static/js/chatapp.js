@@ -1,5 +1,9 @@
 document.getElementById("loggeduser").innerHTML = localStorage.getItem("username");
 
+
+function getMessage(){
+
+}
 $("#profile-img").click(function() {
 	$("#status-options").toggleClass("active");
 });
@@ -16,7 +20,6 @@ $("#contact-list").on('click', 'li', function() {
   $(this).addClass('active');
   activeContactUserName = $("#contact-list li.active p.name").text();
   $(".content p.username").text(activeContactUserName);
-
 });
 
 $("#status-options ul li").click(function() {
@@ -57,7 +60,7 @@ $('.submit').click(function() {
   newMessage();
 });
 
- z
+
 $(window).on('keydown', function(e) {
   if (e.which == 13) {
     sendMessage();

@@ -1,6 +1,6 @@
-function getMessage(email) {
+function getActiveMessage(email) {
 
-    console.log('I am in message function');
+    console.log('I am in message function' , email);
     console.log('EMAIL' , email);
 
     const domain = getDomain();
