@@ -40,11 +40,6 @@ public class FormController {
         return "setting";
     }
 
-    @RequestMapping("/contact")
-    public String ContactPage() {
-        return "contact";
-    }
-
     @RequestMapping("/websocket")
     public String socket() {
         return "socket";

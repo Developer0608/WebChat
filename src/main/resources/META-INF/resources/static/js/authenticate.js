@@ -46,7 +46,6 @@ function login(event) {
 	.then(res => {
 		if(res) {
 			swal("Great!", "LoggedIn Successfully", "success");
-			
 			localStorage.setItem('email', (res.email));
 			localStorage.setItem('username', (res.username));
 			localStorage.setItem('token', `Bearer ${res.jwttoken}`)
@@ -54,7 +53,7 @@ function login(event) {
 			setTimeout(()=>{
 				console.log('I am in timeout function');
 				console.log("Passed EMAIL ::: ", res.email)
-				getMessage(localStorage.getItem('email'));
+				getActiveMessage(localStorage.getItem('email'));
 				window.open('/', "_self");
 			},500);
 		}

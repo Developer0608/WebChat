@@ -1,9 +1,6 @@
 document.getElementById("loggeduser").innerHTML = localStorage.getItem("username");
 
 
-function getMessage(){
-
-}
 $("#profile-img").click(function() {
 	$("#status-options").toggleClass("active");
 });
