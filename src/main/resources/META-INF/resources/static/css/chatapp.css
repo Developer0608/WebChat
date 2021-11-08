@@ -623,8 +623,10 @@ body {
     padding: 11px 32px 10px 8px;
     font-size: 0.8em;
     color: #32465a;
-    margin-top: 2px;
-    border-radius: 12px;
+    margin-left: 0px;
+    margin-right: -44px;
+
+    /* border-radius: 12px; */
   }
   @media screen and (max-width: 735px) {
     #frame .content .message-input .wrap input {
@@ -634,7 +636,8 @@ body {
   #frame .content .message-input .wrap input:focus {
     outline: none;
   }
-  #frame .content .message-input .wrap .attachment {
+  #frame .content .message-input .wrap .grin {
+    background-image: url("../pics/icons8-grinning-face-with-sweat-48.png");
     position: absolute;
     right: 60px;
     z-index: 4;
@@ -644,6 +647,8 @@ body {
     opacity: 0.5;
     cursor: pointer;
   }
+
+ 
   @media screen and (max-width: 735px) {
     #frame .content .message-input .wrap .attachment {
       margin-top: 17px;
@@ -661,7 +666,7 @@ body {
     cursor: pointer;
     background: #32465a;
     color: #f5f5f5;
-    border-radius: 20px;
+    /* border-radius: 20px; */
   }
   @media screen and (max-width: 735px) {
     #frame .content .message-input .wrap button {
@@ -678,4 +683,10 @@ body {
 
   #searched-user{
     display: list-item;
+    
+  }
+
+  #emoji{
+    margin-left: 15px;
+    font-size:20px
   }

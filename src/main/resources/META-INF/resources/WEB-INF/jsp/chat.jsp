@@ -17,6 +17,7 @@
 	<script src="../../static/js/message.js"></script>
 	<script src="../../static/js/searchContact.js"></script>
 	<script src="../../static/js/activeContact.js"></script>
+	<script src="../../static/js/getEmoji.js"></script>
 </head>
 
 <body onload="getContact(localStorage.getItem('email'))">
@@ -59,10 +60,8 @@
 		</div>
 		<div class="message-input">
 			<div class="wrap">
+			<i id="emoji" class='far fa-grin' onclick = "getEmoji()" area-hidden="true" style="position: relative; margin-top: 10px;"></i>
 			<input type="text" id="messageText" placeholder="Write your message..." />
-			<i class="fa fa-paperclip attachment" aria-hidden="true">
-				<!-- <input id="file" type="file" name="file" placeholder="Photo" required="" capture> -->
-			</i>
 			<button class="submit" onclick="sendMessage()" one><i class="fa fa-paper-plane" aria-hidden="true"></i></button>  
 			</div>
 		</div>
