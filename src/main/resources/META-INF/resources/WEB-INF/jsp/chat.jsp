@@ -16,6 +16,7 @@
 	<script src="../../static/js/app.js"></script>
 	<script src="../../static/js/message.js"></script>
 	<script src="../../static/js/searchContact.js"></script>
+	<script src="../../static/js/activeContact.js"></script>
 </head>
 
 <body onload="getContact(localStorage.getItem('email'))">

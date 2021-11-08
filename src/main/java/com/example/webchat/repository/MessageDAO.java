@@ -49,7 +49,7 @@ public class MessageDAO {
 
     public List<Map<String, Object>> getUsers(String word) throws Exception {
         System.out.println("I am in getUsers");
-        String selectQuery = String.format("select email from users where email LIKE  '%%%s%%'", word);
+        String selectQuery = String.format("select username, email from users where email LIKE  '%%%s%%'", word);
         System.out.println("[REPOSITORY]:::::[MESSAGEDAO]:::[SELECT]::selectQuery" + selectQuery);
         var resultset = jdbcTemplate.queryForList(selectQuery);
 

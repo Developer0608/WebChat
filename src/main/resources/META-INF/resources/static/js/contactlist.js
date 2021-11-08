@@ -1,6 +1,10 @@
 console.log('I am in contactList ');
 
 
+function displayContact(username, email){
+    console.log('$$$$$$$$$$$$', username, email);
+    $('<li class="contact" id="' + email + '" onclick=\"(getActiveMessage(\'' + email  + '\'))"\><div class="wrap"><div class="meta"><p class="name">'+ username +'</p></li>').appendTo($('#contacts ul'));
+}
 function getContact(email) {
 
     console.log('I am in contact function');
@@ -28,7 +32,7 @@ function getContact(email) {
         if(res){
             console.log('Displaying Response');
             for (const obj of res) {
-                $('<li class="contact" id="' + obj.email + '" onclick=\"(getActiveMessage(\'' + obj.email  + '\'))"\><div class="wrap"><div class="meta"><p class="name">'+ obj.username +'</p></li>').appendTo($('#contacts ul')); 
+                  displayContact(obj.username, obj.email);
             }
             console.log(res);
         }

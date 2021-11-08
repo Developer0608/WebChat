@@ -29,8 +29,8 @@ function searchContacts(event){
                 console.log(res);
                 $('#search ul li').remove();
                 for (const obj of res) {
-                    console.log(obj.email);
-                    $('<li class="users-name"><p>'+ obj.email +'</p></li>').appendTo('#search ul')
+                    console.log(obj.username, obj.email);
+                    $('<li class="users-name" onclick=\"(activeContact(\'' + obj.username+ '\',\'' + obj.email + '\'))"\><p>'+ obj.email +'</p></li>').appendTo('#search ul')
                 }
                 
             }

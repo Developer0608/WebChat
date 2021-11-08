@@ -23,6 +23,8 @@ $("#contact-list").on('click', 'li', function() {
   $(".content p.username").text(activeContactUserName);
 });
 
+
+
 $("#status-options ul li").click(function() {
 	$("#profile-img").removeClass();
 	$("#status-online").removeClass("active");
