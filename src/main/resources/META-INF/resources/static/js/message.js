@@ -25,6 +25,7 @@ function getActiveMessage(email) {
         if(res){
             console.log('I am about to print response');
             console.log(res);
+            newMessage(res);
         }
     }) 
     .catch(err => {

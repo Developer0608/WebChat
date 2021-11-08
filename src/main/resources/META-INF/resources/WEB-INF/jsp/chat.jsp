@@ -52,33 +52,6 @@
 		</div>
 		<div class="messages">
 			<ul>
-				<li class="sent">
-					<p>How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!</p>
-				</li>
-				<li class="sent">
-					<p>wrwrwre that I do?!</p>
-				</li>
-				<li class="replies">
-					<p>When you're backed against the wall, break the god damn thing down.</p>
-				</li>
-				<li class="replies">
-					<p>Excuses don't win championships.</p>
-				</li>
-				<li class="sent">
-					<p>Oh yeah, did Michael Jordan tell you that?</p>
-				</li>
-				<li class="replies">
-					<p>No, I told him that.</p>
-				</li>
-				<li class="replies">
-					<p>What are your choices when someone puts a gun to your head?</p>
-				</li>
-				<li class="sent">
-					<p>What are you talking about? You do what they say or they shoot you.</p>
-				</li>
-				<li class="replies">
-					<p>get out.</p>
-				</li>
 			</ul>
 		</div>
 		<div class="message-input">
