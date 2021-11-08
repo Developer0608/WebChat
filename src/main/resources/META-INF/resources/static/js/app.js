@@ -18,7 +18,7 @@ stompClient.connect({}, function(frame) {
         
         $('<li class="replies"><p>' + receivedMessage + '</p></li>').appendTo($('.messages ul'));  
         $('.contact.active .preview').html('<span>You: </span>' + receivedMessage);
-        $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+        $(".messages").animate({ scrollTop: $(document).height()-100}, 1000);
     })
 });
 

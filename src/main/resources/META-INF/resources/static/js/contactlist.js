@@ -28,7 +28,7 @@ function getContact(email) {
         if(res){
             console.log('Displaying Response');
             for (const obj of res) {
-                $('<li class="contact" id="' + obj.email + '" onclick=\"(getActiveMessage(\'' + obj.email  + '\'))"\><div class="wrap"><div class="meta"><p class="name">'+ obj.username +'</p></li>').appendTo($('#contacts ul'));
+                $('<li class="contact" id="' + obj.email + '" onclick=\"(getActiveMessage(\'' + obj.email  + '\'))"\><div class="wrap"><div class="meta"><p class="name">'+ obj.username +'</p></li>').appendTo($('#contacts ul')); 
             }
             console.log(res);
         }

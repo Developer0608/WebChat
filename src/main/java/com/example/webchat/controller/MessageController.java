@@ -80,4 +80,13 @@ public class MessageController {
     return ResponseEntity.ok(extractedContact);
   }
 
+  @RequestMapping(value = "/search-users/{word}", method = RequestMethod.GET)
+  public ResponseEntity<?> searchUsers(@PathVariable("word") String word) throws Exception {
+
+    System.out.println("WORD ::::::  " + word);
+    List<?> extractedUsers = messageService.getUsers(word);
+    System.out.println("[USERS]::::: " + extractedUsers);
+    return ResponseEntity.ok(extractedUsers);
+  }
+
 }

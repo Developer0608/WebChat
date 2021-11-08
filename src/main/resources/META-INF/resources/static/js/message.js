@@ -32,17 +32,16 @@ function getActiveMessage(email) {
                     $('<li class="sent"><p>' + obj.messages + '</p></li>').appendTo($('.messages ul'));  
                     $('.message-input input').val(null);
                     $('.contact.active .preview').html('<span>You: </span>' + obj.messages);
-                    $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+                    // $(".messages").animate({ scrollTop: $(document).height() }, "fast");
                 }
             
                 if(obj.receiver == localStorage.getItem('email')){
                     $('<li class="replies"><p>' + obj.messages + '</p></li>').appendTo($('.messages ul'));  
                     $('.message-input input').val(null);
                     $('.contact.active .preview').html('<span>You: </span>' + obj.messages);
-                    $(".messages").animate({ scrollTop: $(document).height() }, "fast");
                 }
             }
-            
+            $(".messages").animate({ scrollTop: $(document).height()+$(window).height() }, "fast");
         }
     }) 
     .catch(err => {

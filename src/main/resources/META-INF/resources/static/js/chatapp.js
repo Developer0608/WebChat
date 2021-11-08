@@ -57,7 +57,7 @@ function newMessage() {
   $('<li class="sent"><p>' + message + '</p></li>').appendTo($('.messages ul'));  
   $('.message-input input').val(null);
   $('.contact.active .preview').html('<span>You: </span>' + message);
-  $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+  $(".messages").animate({ scrollTop: $(document).height()+$(window).height() }, "fast");
 };
 
 $('.submit').click(function() {

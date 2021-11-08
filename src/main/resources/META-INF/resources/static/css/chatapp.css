@@ -541,6 +541,7 @@ body {
   }
   #frame .content .messages {
     background-image: url("../pics/1336125.jpg");
+    background-repeat: no-repeat;
     height: auto;
     min-height: calc(100% - 93px);
     max-height: calc(100% - 93px);
@@ -672,4 +673,9 @@ body {
   }
   #frame .content .message-input .wrap button:focus {
     outline: none;
+  }
+
+
+  #searched-user{
+    display: list-item;
   }

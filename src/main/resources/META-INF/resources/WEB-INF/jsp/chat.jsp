@@ -15,6 +15,7 @@
 	<script src="../../static/js/api.js"></script>
 	<script src="../../static/js/app.js"></script>
 	<script src="../../static/js/message.js"></script>
+	<script src="../../static/js/searchContact.js"></script>
 </head>
 
 <body onload="getContact(localStorage.getItem('email'))">
@@ -30,7 +31,9 @@
 		</div>
 		<div id="search">
 			<label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
-			<input type="text" placeholder="Search contacts..." />
+			<input type="text" id="search-text" placeholder="Search contacts..." onkeyup="searchContacts(event)" />
+			<ul class="searched-user">
+			</ul>
 		</div>
 		<div id="contacts">
 			<ul id="contact-list">
