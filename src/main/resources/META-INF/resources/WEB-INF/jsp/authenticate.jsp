@@ -72,7 +72,7 @@
 
     <footer>
         <p>
-            SAVE WATER, SAVE LIFE
+            YOUR PRIVACY, OUR PRIORITY
         </p>
     </footer>
 </body>

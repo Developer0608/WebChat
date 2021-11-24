@@ -63,10 +63,10 @@ public class MessageController {
 
   @RequestMapping(value = "/messages/{email}", method = RequestMethod.GET)
   public ResponseEntity<?> message(@PathVariable("email") String email) throws Exception {
-    System.out.println("EMAIL :::: " + email);
-    System.out.println("I am in messages section");
+    // System.out.println("EMAIL :::: " + email);
+    // System.out.println("I am in messages section");
     List<?> extractedMessage = messageService.getMessage(email);
-    System.out.println("MESSAGES ::::: " + extractedMessage);
+    // System.out.println("MESSAGES ::::: " + extractedMessage);
 
     return ResponseEntity.ok(extractedMessage);
     // return new ResponseEntity<>(HttpStatus.OK);
@@ -76,16 +76,16 @@ public class MessageController {
   public ResponseEntity<?> contactList(@PathVariable("email") String email) throws Exception {
 
     List<?> extractedContact = messageService.getContact(email);
-    System.out.println("[CONTACT LIST] :::::: " + extractedContact);
+    // System.out.println("[CONTACT LIST] :::::: " + extractedContact);
     return ResponseEntity.ok(extractedContact);
   }
 
   @RequestMapping(value = "/search-users/{word}", method = RequestMethod.GET)
   public ResponseEntity<?> searchUsers(@PathVariable("word") String word) throws Exception {
 
-    System.out.println("WORD ::::::  " + word);
+    // System.out.println("WORD :::::: " + word);
     List<?> extractedUsers = messageService.getUsers(word);
-    System.out.println("[USERS]::::: " + extractedUsers);
+    // System.out.println("[USERS]::::: " + extractedUsers);
     return ResponseEntity.ok(extractedUsers);
   }
 
