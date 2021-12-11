@@ -124,7 +124,6 @@ function updateUsername(event){
 		})
 	}).then(data => data.json()).then(res => {
       localStorage.setItem("username", res.username);
-      // document.getElementById("loggeduser").innerHTML = localStorage.getItem("username");
 			swal("Great!", "Updated Successfully", "success");
 			setTimeout(()=>{
 				window.open('setting', "_self");

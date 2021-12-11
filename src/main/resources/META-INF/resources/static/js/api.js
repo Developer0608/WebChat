@@ -1,4 +1,4 @@
 function getDomain() {
-    return "http://639e-103-109-13-90.ngrok.io";
+    return "http://8f7a-14-102-100-41.ngrok.io";
     // return "http://localhost:8086";
 } 

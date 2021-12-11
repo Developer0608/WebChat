@@ -1,7 +1,6 @@
 package com.example.webchat.service;
 
 import java.util.List;
-import java.util.Map;
 
 import com.example.webchat.dto.MessageDTO;
 import com.example.webchat.repository.MessageDAO;
@@ -36,7 +35,7 @@ public class MessageService {
         return messageDAO.getContact(email);
     }
 
-    public List<?> getUsers(String word) throws Exception{
+    public List<?> getUsers(String word) throws Exception {
         return messageDAO.getUsers(word);
     }
 }

@@ -36,7 +36,7 @@ public class MessageController {
 
   @MessageMapping("/chat")
   public void greeting(String message) throws Exception {
-    System.out.println(">>>>>>>>>>>>> MESSAGE IN SERVER ##############" + message);
+    // System.out.println(">>>>>>>>>>>>> MESSAGE IN SERVER ##############" + message);
 
     JsonObject jsonObject = new JsonParser().parse(message).getAsJsonObject();
     System.out.println("PRINT ++++++++++++++ " + jsonObject.get("to"));
@@ -51,9 +51,9 @@ public class MessageController {
 
     messageDTO.setTime(now);
 
-    System.out.println("UUID ::: " + messageDTO.getUuid() + "SENDER :: " + messageDTO.getReceiver() + " "
-        + "RECEIVER :: " + messageDTO.getReceiver() + " " + "MESSAGE :: " + messageDTO.getMessages() + " " + "TIME :: "
-        + messageDTO.getTime());
+    // System.out.println("UUID ::: " + messageDTO.getUuid() + "SENDER :: " + messageDTO.getReceiver() + " "
+       // + "RECEIVER :: " + messageDTO.getReceiver() + " " + "MESSAGE :: " + messageDTO.getMessages() + " " + "TIME :: "
+       // + messageDTO.getTime());
 
     messageService.saveMessage(messageDTO);
     String sender = jsonObject.get("to").getAsString();

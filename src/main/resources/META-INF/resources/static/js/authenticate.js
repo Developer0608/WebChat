@@ -11,10 +11,9 @@ signInButton.addEventListener('click', () => {
 	container.classList.remove("right-panel-active");
 });
 
-//function to trigger when user is doing login
+
 function login(event) {
 	event.preventDefault();
-
 	const email = document.getElementById("login_email").value;
 	const password = document.getElementById("login_password").value;
 
@@ -78,10 +77,17 @@ function signup(event){
 		return;
 	}
 
+	// console.log(user_password.length);
 	console.log(username, user_email, user_password);
 	
+	if(user_password.length <= 6){
+		swal("OOPS!!!!!!", "Passsword length must be greater than 6", "warning");
+		
+		return;
+	}
 	if(user_password != confirm_password){
 		swal("OOPS!!!!!!", "Passsword Mis-match", "error");
+		return;
 	}else{
 		fetch(`${domain}/register` , {
 			method: "POST",
